@@ -3,13 +3,13 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: 
-      name: ${{ github.ref_name == 'master' && 'production' || 'development' }}
+      name: ${{ github.ref_name == 'main' && 'production' || 'development' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
           ssh-keyscan -p 22332 -H webserver.sudo.az >> ~/.ssh/known_hosts
 
       - name: Deploy to Production
-        if: github.ref_name == 'master'
+        if: github.ref_name == 'main'
         run: |
           ssh -p 22332 iptech@webserver.sudo.az /bin/bash <<EOF
             set -e
