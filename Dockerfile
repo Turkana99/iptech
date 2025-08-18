@@ -1,7 +1,7 @@
 FROM node:22.14-alpine3.21 as build
 
 WORKDIR /usr/src/app
-COPY iptech /usr/src/app
+COPY . /usr/src/app
 
 RUN npm install -g @angular/cli
 RUN npm install --legacy-peer-deps && npm cache clean --force
