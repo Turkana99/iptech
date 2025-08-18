@@ -1,0 +1,10 @@
+<app-header *ngIf="!isMainPage"></app-header>
+<div>
+  <ngx-spinner
+    type="ball-clip-rotate-multiple"
+    [fullScreen]="false"
+    [bdColor]="'#171a39'"
+  ></ngx-spinner>
+  <router-outlet></router-outlet>
+  <app-footer *ngIf="!isMainPage"></app-footer>
+</div>

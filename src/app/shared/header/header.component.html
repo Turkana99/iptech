@@ -1,0 +1,52 @@
+<header class="w-100 d-flex justify-content-between align-items-center">
+  <div class="logo-wrapper" [routerLink]="[routes.HOME]">
+    <img src="assets/images/IptechLogo.svg" alt="" />
+  </div>
+
+  <nav class="d-flex align-items-center">
+    <ul class="list-unstyled d-flex m-0">
+      <li
+        class="nav-link"
+        [routerLink]="['/' + routes.HOME]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p>Home</p>
+      </li>
+      <li
+        class="nav-link"
+        [routerLink]="['/' + routes.HOME, routes.ABOUT_US]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p>About us</p>
+      </li>
+      <li
+        class="nav-link"
+        [routerLink]="['/' + routes.HOME, routes.SERVICES]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p>Services</p>
+      </li>
+      <li
+        class="nav-link"
+        [routerLink]="['/' + routes.HOME, routes.PRODUCTS]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p>Products</p>
+      </li>
+      <li
+        class="nav-link"
+        [routerLink]="['/' + routes.HOME, routes.CONTACT_US]"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p>Contact us</p>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<app-breadcrumb></app-breadcrumb>

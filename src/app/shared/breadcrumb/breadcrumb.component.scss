@@ -1,0 +1,35 @@
+section {
+  gap: 12px;
+  user-select: none;
+  position: relative;
+  z-index: 500;
+  font-family: "Inter" !important;
+}
+
+.breadcrumb-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: color 200ms;
+
+  &:not(&:last-child):hover {
+    color: #00a0f1;
+  }
+  &:last-child {
+    color: #00a0f1;
+  }
+}
+
+span {
+  color: white;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+@media (max-width: 993px) {
+  section:not(section:has(.breadcrumb-link)) {
+    margin-top: 100px !important;
+  }
+}

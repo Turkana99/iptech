@@ -1,0 +1,238 @@
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.jumbotron-image {
+  height: 930px;
+  width: 1000px;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  right: -320px;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.stats {
+  font-family: Inter;
+  h4 {
+    font-weight: 800;
+    font-size: 36px;
+    color: rgba(184, 213, 255, 1);
+  }
+  p {
+    font-weight: 300;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+.partners-carousel {
+  position: relative;
+  $animationSpeed: 30s;
+  & > img {
+    position: absolute;
+    top: -103px;
+  }
+
+  // Animation
+  @keyframes scroll {
+    0% {
+      transform: translateX(100vw);
+    }
+    100% {
+      transform: translateX(calc(-250px * var(--quantity)));
+    }
+  }
+
+  // Styling
+  .slider {
+    --slideWidth: 250px;
+    background: transparent;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 10% 90%,
+      transparent
+    );
+
+    .slide-track {
+      animation: scroll $animationSpeed linear infinite;
+      display: flex;
+      width: calc(250px * var(--quantity));
+
+      &:hover {
+        animation-play-state: paused !important;
+      }
+    }
+
+    .slide {
+      height: 100px;
+      width: var(--slideWidth);
+      padding: 0 15px;
+      .inner {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: var(--backgroundImgUrl);
+      }
+    }
+  }
+}
+
+.about-us-images {
+  .image-container {
+    --border-radius: 50px;
+    background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
+    width: max-content;
+    height: max-content;
+    padding: 4px;
+    border-radius: var(--border-radius);
+    position: var(--position);
+    top: var(--top);
+    right: var(--right);
+
+    & .inner-image-wrapper {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-image: var(--backgroundImgUrl);
+      width: var(--width) !important;
+      height: var(--height) !important;
+      border-radius: var(--border-radius);
+    }
+  }
+}
+
+.customers-carousel {
+  $animationSpeed: 30s;
+  position: relative;
+
+  & > img {
+    position: absolute;
+    top: -70px;
+    right: 0;
+  }
+
+  .carousel-header {
+    font-size: 40px;
+  }
+
+  // Animation
+  @keyframes reverseScroll {
+    0% {
+      transform: translateX(calc(-250px * var(--quantity)));
+    }
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+
+  // Styling
+  .slider {
+    --slideWidth: 250px;
+    background: transparent;
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 10% 90%,
+      transparent
+    );
+
+    .slide-track {
+      animation: reverseScroll $animationSpeed linear infinite;
+      display: flex;
+      width: calc(250px * var(--quantity));
+
+      &:hover {
+        animation-play-state: paused !important;
+      }
+    }
+
+    .slide {
+      height: 100px;
+      width: var(--slideWidth);
+      padding: 0 15px;
+
+      .inner {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: var(--backgroundImgUrl);
+      }
+    }
+  }
+}
+
+.about-description {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 43px;
+}
+
+.aside-nav {
+  position: fixed;
+  height: 100vh;
+  width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+
+  ul {
+    gap: 10px;
+    padding: 15px 5px;
+    border-radius: 10px;
+
+    li {
+      min-width: 20px;
+      max-width: 2%;
+      min-height: 20px;
+      max-height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .outer {
+    width: 11px;
+    height: 11px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: all 200ms;
+    cursor: pointer;
+
+    .inner {
+      min-width: 10px;
+      max-width: 10px;
+      min-height: 10px;
+      max-height: 10px;
+      background-color: white;
+      border-radius: 5px;
+    }
+  }
+
+  li.active .outer {
+    width: 20px;
+    height: 20px;
+    border-color: rgba(0, 160, 241, 1);
+  }
+}
