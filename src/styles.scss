@@ -201,85 +201,57 @@ section {
 }
 
 .service-card {
-  @keyframes moveGradient {
-    50% {
-      background-position: 100% 50%;
+  display: flex;
+  padding: 38px;
+  gap: 50px;
+  width: 100%;
+  height: 100%;
+  background-image: url(assets/images/gradient-border.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  .card-left {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .card-image {
+      width: 80px;
+      height: 80px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: var(--backgroundImgUrl);
+    }
+    .card-number {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+      font-size: 66px;
+      transform: rotate(-90deg);
+      color: rgba(255, 255, 255, 0.32);
     }
   }
-
-  padding: 1px;
-  --border-radius: 20px;
-  border-radius: var(--border-radius);
-  height: 440px;
-  border: 0.5px solid;
-  // background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
-  background: linear-gradient(
-    60deg,
-    hsl(200, 85%, 66%),
-    hsl(205, 85%, 66%),
-    hsl(210, 85%, 66%),
-    hsl(215, 85%, 66%),
-    hsl(220, 85%, 66%),
-    hsl(210, 85%, 66%),
-    hsl(205, 85%, 66%),
-    hsl(200, 85%, 66%)
-  );
-
-  background-size: 300% 300%;
-  animation: moveGradient 4s alternate infinite;
-
-  .inner-card-wrapper {
+  .card-right {
     display: flex;
-    padding: 38px;
-    gap: 50px;
-    width: 100%;
-    height: 100%;
-    border-radius: var(--border-radius);
-    background: linear-gradient(25deg, #000a16 18.23%, #132540 72.74%);
-
-    .card-left {
-      width: max-content;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .card-image {
-        width: 80px;
-        height: 80px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-image: var(--backgroundImgUrl);
-      }
-      .card-number {
-        font-family: "Be Vietnam Pro", sans-serif;
-        font-weight: 700;
-        font-size: 66px;
-        transform: rotate(-90deg);
-        color: rgba(255, 255, 255, 0.32);
-      }
+    flex-direction: column;
+    justify-content: space-between;
+    .card-title {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: white;
     }
-    .card-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .card-title {
-        font-family: "Be Vietnam Pro", sans-serif;
-        font-weight: 700;
-        font-size: 40px;
-        color: white;
-      }
-      .card-description {
-        font-family: "Be Vietnam Pro", sans-serif;
-        font-weight: 200;
-        font-size: 16px;
-        font-style: regular;
-        line-height: 30px;
-        color: white;
-        margin-top: 15px;
-        height: 160px;
-        overflow: hidden;
-      }
+    .card-description {
+      font-family: "Be Vietnam Pro", sans-serif;
+      font-weight: 200;
+      font-size: 16px;
+      font-style: regular;
+      line-height: 30px;
+      color: white;
+      margin-top: 15px;
+      height: 160px;
+      overflow: hidden;
     }
   }
 }
