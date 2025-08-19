@@ -31,7 +31,6 @@ export class AppComponent implements OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((event: any) => {
-        console.log('event', event);
         if (event instanceof NavigationEnd) {
           this.isMainPage = event.urlAfterRedirects === `/${AppRoutes.HOME}`;
         }

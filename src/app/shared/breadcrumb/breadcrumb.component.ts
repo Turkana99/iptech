@@ -1,6 +1,5 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreadcrumbService } from '../../core/services/breadcrumb.service';
-import { Observable, tap } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -11,19 +10,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss',
 })
-export class BreadcrumbComponent implements OnInit {
-  constructor(
-    private destroyRef: DestroyRef,
-    private breadcrumbService: BreadcrumbService
-  ) {}
+export class BreadcrumbComponent {
+  constructor(private breadcrumbService: BreadcrumbService) {}
 
-  breadCrumb$ = new Observable<{ name: string; path: string }[]>();
-
-  ngOnInit(): void {
-    this.breadCrumb$ = this.breadcrumbService.breadCrumb$.pipe(
-      tap((data: any) => {
-        console.log('data', data);
-      })
-    );
-  }
+  breadCrumb$ = this.breadcrumbService.breadCrumb$;
 }

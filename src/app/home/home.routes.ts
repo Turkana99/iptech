@@ -21,13 +21,11 @@ export const routes: Routes = [
       },
       {
         path: AppRoutes.ABOUT_US,
-        data: { breadcrumb: AppRoutes.ABOUT_US },
         loadChildren: () =>
           import('./components/about/component.routes').then((c) => c.routes),
       },
       {
         path: AppRoutes.CONTACT_US,
-        data: { breadcrumb: AppRoutes.CONTACT_US },
         loadChildren: () =>
           import('./components/contact-us/component.routes').then(
             (c) => c.routes
@@ -35,7 +33,6 @@ export const routes: Routes = [
       },
       {
         path: AppRoutes.PRODUCTS,
-        data: { breadcrumb: AppRoutes.PRODUCTS },
         loadChildren: () =>
           import('./components/products/component.routes').then(
             (c) => c.routes
@@ -43,7 +40,6 @@ export const routes: Routes = [
       },
       {
         path: AppRoutes.SERVICES,
-        data: { breadcrumb: AppRoutes.SERVICES },
         loadChildren: () =>
           import('./components/services/component.routes').then(
             (c) => c.routes

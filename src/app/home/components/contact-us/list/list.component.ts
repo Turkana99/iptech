@@ -7,6 +7,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
+import { AppRoutes } from '../../../home.routes';
 
 @Component({
   selector: 'app-list',
@@ -19,7 +21,16 @@ export class ListComponent {
   appealForm!: FormGroup;
   requestSent = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private breadcrumbService: BreadcrumbService
+  ) {
+    this.breadcrumbService.setBreadcrumb([
+      {
+        path: AppRoutes.CONTACT_US,
+      },
+    ]);
+  }
 
   ngOnInit() {
     this.initForm();

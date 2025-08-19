@@ -1,11 +1,9 @@
-<ng-container *ngIf="this.breadCrumb$ | async as breadCrumbs">
+<ng-container *ngIf="breadCrumb$ | async as breadCrumbs">
   <section
     class="container d-flex flex-wrap pt-3"
     *ngIf="breadCrumbs.length > 1"
   >
     <ng-container *ngFor="let item of breadCrumbs; index as i">
-      <!-- <a class="breadcrumb-link" [routerLink]="item.path">{{ item.name }} </a> -->
-
       <a
         *ngIf="i != breadCrumbs.length - 1"
         class="breadcrumb-link"

@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
+import { AppRoutes } from '../../../home.routes';
 
 @Component({
   selector: 'app-list',
@@ -9,6 +11,13 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
+  constructor(private breadcrumbService: BreadcrumbService) {
+    this.breadcrumbService.setBreadcrumb([
+      {
+        path: AppRoutes.ABOUT_US,
+      },
+    ]);
+  }
   getImageUrl(url: string) {
     return `url('${encodeURI(url)}')`;
   }
