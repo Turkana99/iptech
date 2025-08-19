@@ -593,3 +593,32 @@ section {
     -webkit-text-fill-color: transparent;
   }
 }
+
+.entity {
+  padding: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(
+    159deg,
+    #02538b 30.97%,
+    #013068 44.12%,
+    #021a40 68.36%
+  );
+  cursor: pointer;
+
+  span {
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    font-style: Regular;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: white;
+  }
+  i {
+    color: #00a0f1;
+    font-size: 24px;
+  }
+}

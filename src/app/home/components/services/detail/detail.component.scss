@@ -1,0 +1,21 @@
+.image-container {
+  --border-radius: 50px;
+  background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
+  width: 100%;
+  height: max-content;
+  padding: 4px;
+  border-radius: var(--border-radius);
+  position: var(--position);
+  top: var(--top);
+  right: var(--right);
+
+  & .inner-image-wrapper {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: var(--backgroundImgUrl);
+    width: var(--width) !important;
+    height: var(--height) !important;
+    border-radius: var(--border-radius);
+  }
+}
