@@ -585,12 +585,18 @@ section {
   padding: 10px 24px;
   background-color: transparent;
   border: none;
+  transition: all 0.2s;
 
   span {
     background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  &:hover {
+    background-color: #314a6e;
+    border-radius: 8px;
   }
 }
 
