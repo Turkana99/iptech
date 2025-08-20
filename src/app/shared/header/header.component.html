@@ -4,7 +4,7 @@
   </div>
 
   <nav class="d-flex align-items-center">
-    <ul class="list-unstyled d-flex m-0">
+    <ul class="list-unstyled d-flex m-0 me-5">
       <li
         class="nav-link"
         [routerLink]="['/' + routes.HOME]"
@@ -46,6 +46,31 @@
         <p>Contact us</p>
       </li>
     </ul>
+
+    <div class="d-none d-lg-flex">
+      <div class="d-flex align-items-center">
+        <label for="langBtn">{{ currentLang }}</label>
+        <button
+          id="langBtn"
+          style="position: relative; right: 12px; color: white"
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+          [disableRipple]="true"
+        >
+          <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+      </div>
+      <mat-menu #menu="matMenu" class="language-menu">
+        <button
+          mat-menu-item
+          *ngFor="let item of langs"
+          (click)="changeLanguage(item)"
+        >
+          <span styl>{{ item.displayName }}</span>
+        </button>
+      </mat-menu>
+    </div>
   </nav>
 </header>
 

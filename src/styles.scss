@@ -628,3 +628,19 @@ section {
     font-size: 24px;
   }
 }
+
+.language-menu {
+  --background-color: #011b2e;
+
+  background-color: var(--background-color) !important;
+  border-radius: 12px !important;
+  width: max-content !important;
+  button {
+    span {
+      color: white !important;
+      display: flex !important;
+      justify-content: center !important;
+      font-weight: 300;
+    }
+  }
+}

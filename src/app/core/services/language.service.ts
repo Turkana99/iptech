@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Languages } from '../languages';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class LanguageService {
     const lang = localStorage.getItem('language');
     this._language = !!lang
       ? JSON.parse(lang)
-      : { displayName: 'Az', culture: 'az-AZ' };
+      : { displayName: 'Az', culture: Languages.AZ };
   }
 
   getAll() {
@@ -31,12 +32,12 @@ export class LanguageService {
 
     return (
       this.constantNavItem[currentLang?.culture] ||
-      this.constantNavItem['az-AZ']
+      this.constantNavItem[Languages.AZ]
     );
   }
 
   constantNavItem: any = {
-    'az-AZ': {
+    [Languages.AZ]: {
       home: 'Ana Səhifə',
       service: 'Xidmətlər',
       product: 'Məhsullar',
@@ -68,7 +69,7 @@ export class LanguageService {
       },
       share: 'Paylaşın',
     },
-    'en-US': {
+    [Languages.EN]: {
       home: 'Home',
       service: 'Services',
       product: 'Products',
@@ -100,7 +101,7 @@ export class LanguageService {
       },
       share: 'Share',
     },
-    'ru-RU': {
+    [Languages.RU]: {
       home: 'Главная страница',
       service: 'Услуги',
       product: 'Продукты',

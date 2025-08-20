@@ -6,6 +6,7 @@ import { filter, Subject, takeUntil } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppRoutes } from './home/home.routes';
+import { MaterialModule } from './core/material.module';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { AppRoutes } from './home/home.routes';
     RouterOutlet,
     CommonModule,
     NgxSpinnerModule,
+    MaterialModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
