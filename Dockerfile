@@ -9,6 +9,7 @@ RUN npm install --legacy-peer-deps && npm cache clean --force
 RUN ng build --configuration production
 
 FROM nginx:latest
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /usr/src/app/docs /usr/share/nginx/html/
 
