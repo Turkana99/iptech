@@ -18,5 +18,4 @@ export const environment = {
    AboutPages: {
     get: `${baseUrl}/AboutPages/about-page-by-client`,
   },
-  
 };
