@@ -1,204 +1,199 @@
-<main>
-  <section class="container section-split about-us" ngbScrollSpyFragment="3">
-    <div class="section-content d-flex">
-      <div class="col-6">
-        <div class="about-us-images d-flex">
-          <div class="image-container">
+<ng-container *ngIf="data$ | async as data">
+  <main>
+    <section class="container section-split about-us" ngbScrollSpyFragment="3">
+      <div class="section-content d-flex">
+        <div class="col-6">
+          <div class="about-us-images d-flex">
+            <div class="image-container">
+              <div
+                class="inner-image-wrapper"
+                [ngStyle]="{
+                  '--backgroundImgUrl': getImageUrl(data?.aboutPageMainImagePath),
+                  '--width': '480px',
+                  '--height': '720px'
+                }"
+              ></div>
+            </div>
+            <div
+              class="image-container"
+              [ngStyle]="{
+                '--position': 'relative',
+                '--top': '360px',
+                '--right': '300px'
+              }"
+            >
+              <div
+                class="inner-image-wrapper"
+                [ngStyle]="{
+              '--backgroundImgUrl': getImageUrl(data?.aboutPageOtherImagePath),
+              '--width': '420px',
+              '--height': '420px',
+            }"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h3 class="section-title"><b>{{ data?.aboutSectionTitle }}</b></h3>
+          <h3 class="section-header text-white">
+            {{data?.aboutSectionSubTitle}}
+          </h3>
+          <h3 class="section-description text-white">
+            {{data?.aboutSectionDescription}}
+          </h3>
+
+          <div class="col-12 mt-5">
+            <button
+              class="button-transparent-gradient-border be-vietnam-pro-thin"
+            >
+              <span>Read more</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats section-split">
+      <img class="left" src="assets/images/techno_left.png" alt="" />
+      <img class="right" src="assets/images/techno_right.png" alt="" />
+      <div class="container">
+        <div class="row">
+          <div class="stat-item col-4">
+            <h2>37k+</h2>
+            <p>Products</p>
+          </div>
+          <div class="stat-item col-4">
+            <h2>20k+</h2>
+            <p>Services</p>
+          </div>
+          <div class="stat-item col-4">
+            <h2>99k+</h2>
+            <p>Partners</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="our-commitment section-split">
+      <h3 class="section-title text-center"><b>{{data?.qualitySectionTitle}}</b></h3>
+      <h3 class="section-header text-white text-center mb-5">
+        Our Commitment to Excellence at IPTech
+      </h3>
+
+      <div class="w-100 row">
+        <div class="col-4">
+          <div class="row gap-5">
+            <div class="commitment-item mb-5">
+              <div class="d-flex justify-content-center mb-4">
+                <div
+                  class="commitment-image-wrapper"
+                  [ngStyle]="{
+              '--backgroundImgUrl': getImageUrl('assets/images/commitment_img.png'),
+              '--width': '70px',
+              '--height': '70px',
+            }"
+                ></div>
+              </div>
+              <h4 class="item-title">Innovation-Driven Quality</h4>
+              <div class="d-flex justify-content-center my-3">
+                <div class="separator"></div>
+              </div>
+              <p class="item-description">
+                We stay ahead by embracing emerging technologies and creative
+                problem-solving. Our team is constantly exploring new tools and
+                strategies to deliver cutting-edge solutions tailored to your
+                needs.
+              </p>
+            </div>
+
+            <div class="commitment-item mb-5">
+              <div class="d-flex justify-content-center mb-4">
+                <div
+                  class="commitment-image-wrapper"
+                  [ngStyle]="{
+              '--backgroundImgUrl': getImageUrl('assets/images/commitment_img.png'),
+              '--width': '70px',
+              '--height': '70px',
+            }"
+                ></div>
+              </div>
+              <h4 class="item-title">Innovation-Driven Quality</h4>
+              <div class="d-flex justify-content-center my-3">
+                <div class="separator"></div>
+              </div>
+              <p class="item-description">
+                We stay ahead by embracing emerging technologies and creative
+                problem-solving. Our team is constantly exploring new tools and
+                strategies to deliver cutting-edge solutions tailored to your
+                needs.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="commitment-image-container">
             <div
               class="inner-image-wrapper"
               [ngStyle]="{
-                '--backgroundImgUrl': getImageUrl(
-                  'assets/images/about-us1.png'
-                ),
+                '--backgroundImgUrl': getImageUrl(data?.aboutPageQualityImagePath),
                 '--width': '480px',
                 '--height': '720px'
               }"
             ></div>
           </div>
-          <div
-            class="image-container"
-            [ngStyle]="{
-              '--position': 'relative',
-              '--top': '360px',
-              '--right': '300px'
-            }"
-          >
-            <div
-              class="inner-image-wrapper"
-              [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/about-us2.png'),
-              '--width': '420px',
-              '--height': '420px',
-            }"
-            ></div>
-          </div>
         </div>
-      </div>
-      <div class="col-6">
-        <h3 class="section-title"><b>About us</b></h3>
-        <h3 class="section-header text-white">
-          Driving Innovation Through Expertise
-        </h3>
-        <h3 class="section-description text-white">
-          IPtech is a forward-thinking IT company dedicated to delivering smart,
-          secure, and scalable technology solutions. With a team of experienced
-          professionals, we help businesses navigate the digital landscape with
-          confidence.  Many desktop publishing packages and web page editors now
-          use Lorem Ipsum as their default model text, and a search for 'lorem
-          ipsum' will uncover many web sites still in their infancy. Various
-          versions have evolved over the years, sometimes by accident, sometimes
-          on purpose (injected humour and the like).
-        </h3>
 
-        <div class="col-12 mt-5">
-          <button class="button-transparent-gradient-border be-vietnam-pro-thin">
-            <span>Read more</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="stats section-split">
-    <img class="left" src="assets/images/techno_left.png" alt="" />
-    <img class="right" src="assets/images/techno_right.png" alt="" />
-    <div class="container">
-      <div class="row">
-        <div class="stat-item col-4">
-          <h2>37k+</h2>
-          <p>Products</p>
-        </div>
-        <div class="stat-item col-4">
-          <h2>20k+</h2>
-          <p>Services</p>
-        </div>
-        <div class="stat-item col-4">
-          <h2>99k+</h2>
-          <p>Partners</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="our-commitment section-split">
-    <h3 class="section-title text-center"><b>Qualities</b></h3>
-    <h3 class="section-header text-white text-center mb-5">
-      Our Commitment to Excellence at IPTech
-    </h3>
-
-    <div class="w-100 row">
-      <div class="col-4">
-        <div class="row gap-5">
-          <div class="commitment-item mb-5">
-            <div class="d-flex justify-content-center mb-4">
-              <div
-                class="commitment-image-wrapper"
-                [ngStyle]="{
+        <div class="col-4">
+          <div class="row gap-5">
+            <div class="commitment-item mb-5">
+              <div class="d-flex justify-content-center mb-4">
+                <div
+                  class="commitment-image-wrapper"
+                  [ngStyle]="{
               '--backgroundImgUrl': getImageUrl('assets/images/commitment_img.png'),
               '--width': '70px',
               '--height': '70px',
             }"
-              ></div>
+                ></div>
+              </div>
+              <h4 class="item-title">Innovation-Driven Quality</h4>
+              <div class="d-flex justify-content-center my-3">
+                <div class="separator"></div>
+              </div>
+              <p class="item-description">
+                We stay ahead by embracing emerging technologies and creative
+                problem-solving. Our team is constantly exploring new tools and
+                strategies to deliver cutting-edge solutions tailored to your
+                needs.
+              </p>
             </div>
-            <h4 class="item-title">Innovation-Driven Quality</h4>
-            <div class="d-flex justify-content-center my-3">
-              <div class="separator"></div>
-            </div>
-            <p class="item-description">
-              We stay ahead by embracing emerging technologies and creative
-              problem-solving. Our team is constantly exploring new tools and
-              strategies to deliver cutting-edge solutions tailored to your
-              needs.
-            </p>
-          </div>
 
-          <div class="commitment-item mb-5">
-            <div class="d-flex justify-content-center mb-4">
-              <div
-                class="commitment-image-wrapper"
-                [ngStyle]="{
+            <div class="commitment-item mb-5">
+              <div class="d-flex justify-content-center mb-4">
+                <div
+                  class="commitment-image-wrapper"
+                  [ngStyle]="{
               '--backgroundImgUrl': getImageUrl('assets/images/commitment_img.png'),
               '--width': '70px',
               '--height': '70px',
             }"
-              ></div>
+                ></div>
+              </div>
+              <h4 class="item-title">Innovation-Driven Quality</h4>
+              <div class="d-flex justify-content-center my-3">
+                <div class="separator"></div>
+              </div>
+              <p class="item-description">
+                We stay ahead by embracing emerging technologies and creative
+                problem-solving. Our team is constantly exploring new tools and
+                strategies to deliver cutting-edge solutions tailored to your
+                needs.
+              </p>
             </div>
-            <h4 class="item-title">Innovation-Driven Quality</h4>
-            <div class="d-flex justify-content-center my-3">
-              <div class="separator"></div>
-            </div>
-            <p class="item-description">
-              We stay ahead by embracing emerging technologies and creative
-              problem-solving. Our team is constantly exploring new tools and
-              strategies to deliver cutting-edge solutions tailored to your
-              needs.
-            </p>
           </div>
         </div>
       </div>
-
-      <div class="col-4">
-        <div class="commitment-image-container">
-          <div
-            class="inner-image-wrapper"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/about-us1.png'),
-              '--width': '480px',
-              '--height': '720px'
-            }"
-          ></div>
-        </div>
-      </div>
-
-      <div class="col-4">
-        <div class="row gap-5">
-          <div class="commitment-item mb-5">
-            <div class="d-flex justify-content-center mb-4">
-              <div
-                class="commitment-image-wrapper"
-                [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/commitment_img.png'),
-              '--width': '70px',
-              '--height': '70px',
-            }"
-              ></div>
-            </div>
-            <h4 class="item-title">Innovation-Driven Quality</h4>
-            <div class="d-flex justify-content-center my-3">
-              <div class="separator"></div>
-            </div>
-            <p class="item-description">
-              We stay ahead by embracing emerging technologies and creative
-              problem-solving. Our team is constantly exploring new tools and
-              strategies to deliver cutting-edge solutions tailored to your
-              needs.
-            </p>
-          </div>
-
-          <div class="commitment-item mb-5">
-            <div class="d-flex justify-content-center mb-4">
-              <div
-                class="commitment-image-wrapper"
-                [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/commitment_img.png'),
-              '--width': '70px',
-              '--height': '70px',
-            }"
-              ></div>
-            </div>
-            <h4 class="item-title">Innovation-Driven Quality</h4>
-            <div class="d-flex justify-content-center my-3">
-              <div class="separator"></div>
-            </div>
-            <p class="item-description">
-              We stay ahead by embracing emerging technologies and creative
-              problem-solving. Our team is constantly exploring new tools and
-              strategies to deliver cutting-edge solutions tailored to your
-              needs.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
+</ng-container>
