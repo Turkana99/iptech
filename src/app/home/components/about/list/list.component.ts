@@ -14,7 +14,8 @@ import { AboutService } from '../../../../core/services/about';
   styleUrl: './list.component.scss',
 })
 export class ListComponent implements OnInit {
-  data$!: Observable<any>;
+  // data$!: Observable<any>;
+  data: any;
   constructor(
     private breadcrumbService: BreadcrumbService,
     private languageService: LanguageService,
@@ -27,11 +28,19 @@ export class ListComponent implements OnInit {
     ]);
   }
 
+  leftQualities: any[] = [];
+  rightQualities: any[] = [];
+
   ngOnInit(): void {
-    this.data$ = this.dataService.get();
+    this.dataService.getAllData().subscribe((res: any) => {
+      this.data = res; // about məlumatı üçün
+      const qualities = res?.qualities as any[];
+      this.leftQualities = qualities.slice(0, 2);
+      this.rightQualities = qualities.slice(2, 4);
+    });
   }
 
-  get Language() {
+  getLanguage() {
     return this.languageService.getTranslate();
   }
 

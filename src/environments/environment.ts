@@ -16,5 +16,14 @@ export const environment = {
   },
   AboutPages: {
     get: `${baseUrl}/AboutPages/about-page-by-client`,
+    getQualitiesForAboutPage: `${baseUrl}/Qualities/list-by-client`,
+  },
+  Services: {
+    getList: ({ page, pageSize }: IPaginatorOptions) =>
+      `${baseUrl}/Services/list-by-client?PageIndex=${page}&PageSize=${pageSize}`,
+    getBySlug: (slug: string) => `${baseUrl}/Services/service-by-slug/${slug}`,
+  },
+  ServicePages: {
+    get: () => `${baseUrl}/ProductPages/product-page-by-client`,
   },
 };
