@@ -16,12 +16,21 @@ import {
 } from '../../../../core/consts';
 import { ServiceService } from '../../../../core/services/service.service';
 import { MaterialModule } from '../../../../core/material.module';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
+import { ContactService } from '../../../../core/services/contact.service';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, RouterLink],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    RouterLink,
+    TranslatePipe,
+  ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -34,7 +43,8 @@ export class ListComponent {
   constructor(
     private fb: FormBuilder,
     private breadcrumbService: BreadcrumbService,
-    private dataService: ServiceService
+    private dataService: ServiceService,
+    private contactService: ContactService
   ) {
     this.breadcrumbService.setBreadcrumb([
       {
@@ -64,17 +74,23 @@ export class ListComponent {
 
   initForm() {
     this.appealForm = this.fb.group({
-      fullName: [null, Validators.required],
+      name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       contactNumber: [null, Validators.required],
       subject: [null, Validators.required],
-      content: [null, Validators.required],
+      message: [null, Validators.required],
     });
   }
 
   submitAppeal() {
-    this.appealForm.reset();
-    this.requestSent = true;
+    if (this.appealForm.invalid) {
+      this.appealForm.markAllAsTouched();
+      return;
+    }
+    this.contactService.sendRequest(this.appealForm.value).subscribe(() => {
+      this.requestSent = true;
+      this.appealForm.reset();
+    });
   }
 
   onPageChange(event: any) {

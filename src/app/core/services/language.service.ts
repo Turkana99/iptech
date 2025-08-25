@@ -53,6 +53,7 @@ export class LanguageService {
       reqMessage1: '*Zəruri xana',
       reqMessage2: '*Keçərli e-poçt daxil edin.',
       contactUs: 'Əlaqə',
+      requestSent: 'Sorğunuz göndərildi!',
       contactUsData: {
         apply: 'Müraciət edin',
         contactUs: 'Əlaqə',
@@ -86,6 +87,7 @@ export class LanguageService {
       reqMessage1: '*Required field',
       reqMessage2: '*Please enter a valid email.',
       contactUs: 'Contact us',
+      requestSent: '{{"requestSent"|translate}}',
       contactUsData: {
         apply: 'Submit a request',
         contactUs: 'Contact us',
@@ -119,6 +121,7 @@ export class LanguageService {
       reqMessage1: 'Обязательное поле',
       reqMessage2: '*Введите действительный адрес электронной почты.',
       contactUs: 'Свяжитесь с нами',
+      requestSent: 'Запрос отправлен!',
       contactUsData: {
         apply: 'Оставить заявку',
         contactUs: 'Свяжитесь с нами',

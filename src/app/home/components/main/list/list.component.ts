@@ -19,6 +19,7 @@ import { AppRoutes } from '../../../home.routes';
 import { Observable, tap } from 'rxjs';
 import { HomepageService } from '../../../../core/services/homepage.service';
 import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
+import { ContactService } from '../../../../core/services/contact.service';
 
 @Component({
   selector: 'app-list',
@@ -46,7 +47,8 @@ export class ListComponent {
   constructor(
     private fb: FormBuilder,
     private breadcrumbService: BreadcrumbService,
-    private dataService: HomepageService
+    private dataService: HomepageService,
+    private contactService: ContactService
   ) {
     this.breadcrumbService.setBreadcrumb([]);
   }
@@ -66,16 +68,22 @@ export class ListComponent {
 
   initForm() {
     this.appealForm = this.fb.group({
-      fullName: [null, Validators.required],
+      name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       contactNumber: [null, Validators.required],
       subject: [null, Validators.required],
-      content: [null, Validators.required],
+      message: [null, Validators.required],
     });
   }
 
   submitAppeal() {
-    this.appealForm.reset();
-    this.requestSent = true;
+    if (this.appealForm.invalid) {
+      this.appealForm.markAllAsTouched();
+      return;
+    }
+    this.contactService.sendRequest(this.appealForm.value).subscribe(() => {
+      this.requestSent = true;
+      this.appealForm.reset();
+    });
   }
 }

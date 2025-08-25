@@ -81,20 +81,16 @@
             <label class="form-label"
               >Name, surname <span class="required-mark">*</span></label
             >
-            <input
-              type="email"
-              class="form-control"
-              formControlName="fullName"
-            />
+            <input type="email" class="form-control" formControlName="name" />
             <!--Required message-->
             <div
               class="validationMessage"
               *ngIf="
-                appealForm.get('fullName')?.errors?.['required'] &&
-                appealForm.get('fullName')?.touched
+                appealForm.get('name')?.errors?.['required'] &&
+                appealForm.get('name')?.touched
               "
             >
-              <p class="p-0 m-0">This field is required.</p>
+              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
             </div>
           </div>
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
@@ -110,13 +106,13 @@
                    appealForm.get('email')?.touched
                  "
             >
-              <p class="p-0 m-0">This field is required.</p>
+              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
             </div>
             <div
               class="validationMessage"
               *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
             >
-              <p class="p-0 m-0">Please enter email in correct format.</p>
+              <p class="p-0 m-0">{{ "reqMessage2" | translate }}</p>
             </div>
           </div>
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
@@ -136,7 +132,7 @@
                    appealForm.get('contactNumber')?.touched
                  "
             >
-              <p class="p-0 m-0">This field is required.</p>
+              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
             </div>
           </div>
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
@@ -152,7 +148,7 @@
                       appealForm.get('subject')?.touched
                     "
             >
-              <p class="p-0 m-0">This field is required.</p>
+              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
             </div>
           </div>
           <div class="col-12">
@@ -162,17 +158,17 @@
             <textarea
               class="form-control"
               rows="3"
-              formControlName="content"
+              formControlName="message"
             ></textarea>
             <!--Required message-->
             <div
               class="validationMessage"
               *ngIf="
-                   appealForm.get('content')?.errors?.['required'] &&
-                   appealForm.get('content')?.touched
+                   appealForm.get('message')?.errors?.['required'] &&
+                   appealForm.get('message')?.touched
                  "
             >
-              <p class="p-0 m-0">This field is required.</p>
+              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
             </div>
           </div>
           <div class="col-12 mt-4">
@@ -185,13 +181,13 @@
             </button>
           </div>
         </form>
-      </div>
-    </div>
-    <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
-      <img src="assets/images/send-email.png" alt="" />
-      <div class="content">
-        <h5>Request sent!</h5>
-        <p>We will contact you soon!</p>
+        <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
+          <img src="assets/images/send-email.png" alt="" />
+          <div class="content">
+            <h5>{{ "requestSent" | translate }}</h5>
+            <p>We will contact you soon!</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
