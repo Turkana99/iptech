@@ -11,7 +11,7 @@
   <swiper-slide *ngFor="let itemGroup of groupedItems">
     <div class="gallery">
       <div class="gallery-panel" *ngFor="let img of itemGroup">
-        <img [src]="img.image" [alt]="img.alt" />
+        <img [src]="img.iconPath" [alt]="img.title" />
       </div>
     </div>
   </swiper-slide>

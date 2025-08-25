@@ -7,11 +7,18 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../core/material.module';
 import { LanguageService } from '../../core/services/language.service';
 import { Languages } from '../../core/languages';
+import { TranslatePipe } from '../../core/pipes/translate.pipe';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, BreadcrumbComponent, CommonModule, MaterialModule],
+  imports: [
+    RouterModule,
+    BreadcrumbComponent,
+    CommonModule,
+    MaterialModule,
+    TranslatePipe,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

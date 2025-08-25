@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -9,21 +16,23 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   styleUrl: './carousel.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnChanges {
   groupSize = 5;
-  constructor() {
-    for (let i = 0; i < this.items.length; i += this.groupSize) {
-      this.groupedItems.push(this.items.slice(i, i + this.groupSize));
-    }
-  }
+  @Input() items = [];
+  constructor() {}
+
   title = 'iptech';
   groupedItems: any = [];
-  items = [
-    { image: 'https://picsum.photos/400/600?random=1', alt: 'Child playing' },
-    { image: 'https://picsum.photos/400/600?random=2', alt: 'Festival' },
-    { image: 'https://picsum.photos/400/600?random=3', alt: 'Music' },
-    { image: 'https://picsum.photos/400/600?random=4', alt: 'Nature' },
-    { image: 'https://picsum.photos/400/600?random=5', alt: 'Art' },
-    { image: 'https://picsum.photos/400/600?random=6', alt: 'Art' },
-  ];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    for (const key of Object.keys(changes)) {
+      if (key == 'items') {
+        this.items = changes[key].currentValue;
+        this.groupedItems = [];
+        for (let i = 0; i < this.items.length; i += this.groupSize) {
+          this.groupedItems.push(this.items.slice(i, i + this.groupSize));
+        }
+      }
+    }
+  }
 }

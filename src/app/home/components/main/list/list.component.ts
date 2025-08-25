@@ -16,6 +16,9 @@ import { HeaderComponent } from '../../../../shared/header/header.component';
 import { FooterComponent } from '../../../../shared/footer/footer.component';
 import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
 import { AppRoutes } from '../../../home.routes';
+import { Observable, tap } from 'rxjs';
+import { HomepageService } from '../../../../core/services/homepage.service';
+import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 
 @Component({
   selector: 'app-list',
@@ -30,6 +33,7 @@ import { AppRoutes } from '../../../home.routes';
     NgbScrollSpyModule,
     HeaderComponent,
     FooterComponent,
+    TranslatePipe,
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
@@ -37,25 +41,24 @@ import { AppRoutes } from '../../../home.routes';
 export class ListComponent {
   appealForm!: FormGroup;
   requestSent = false;
+  data$!: Observable<any>;
 
   constructor(
     private fb: FormBuilder,
-    private breadcrumbService: BreadcrumbService
+    private breadcrumbService: BreadcrumbService,
+    private dataService: HomepageService
   ) {
     this.breadcrumbService.setBreadcrumb([]);
   }
 
   ngOnInit() {
+    this.data$ = this.dataService.getAllData().pipe(
+      tap((data: any) => {
+        console.log('data', data);
+      })
+    );
     this.initForm();
   }
-
-  partners = [
-    'assets/images/partners/Klarna.png',
-    'assets/images/partners/MoneyGram.png',
-    'assets/images/partners/OpenSea.png',
-    'assets/images/partners/Payoneer.png',
-    'assets/images/partners/WesternUnion.png',
-  ];
 
   getImageUrl(url: string) {
     return `url('${encodeURI(url)}')`;

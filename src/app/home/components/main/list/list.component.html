@@ -1,512 +1,483 @@
-<main
-  class="position-relative overflow-x-hidden"
-  ngbScrollSpy
-  #s="ngbScrollSpy"
->
-  <app-header></app-header>
+<ng-container *ngIf="data$ | async as homepageData">
+  <main
+    class="position-relative overflow-x-hidden"
+    ngbScrollSpy
+    #s="ngbScrollSpy"
+  >
+    <app-header></app-header>
 
-  <div class="jumbotron-image">
-    <!-- <img src="assets/images/jumbotron2.png" alt="" /> -->
-    <video autoplay playsinline loop>
-      <source src="assets/globe.webm" type="video/webm"/>
-    </video>
-  </div>
-  <section class="container section-split" ngbScrollSpyFragment="1">
-    <div class="col-8">
-      <h3 class="section-header text-white mb-4">
-        Empowering Innovation Through Technology
-      </h3>
-      <h5 class="title-description text-white mb-4">
-        At IPtech, we deliver cutting-edge IT solutions that drive digital
-        transformation, streamline operations, and help your business thrive in
-        a connected world.
-      </h5>
-      <div class="col-8 row pt-2">
-        <div class="col-4 d-flex flex-column stats">
-          <h4>37k+</h4>
-          <p class="m-0">Products</p>
-        </div>
-        <div class="col-4 d-flex flex-column stats">
-          <h4>20k+</h4>
-          <p class="m-0">Services</p>
-        </div>
-        <div class="col-4 d-flex flex-column stats">
-          <h4>99k+</h4>
-          <p class="m-0">Partners</p>
-        </div>
-        <!-- <div class="col-12 d-flex justify-content-center mt-5">
-          <button class="gradient-button be-vietnam-pro-thin">
-            <span>Read more</span>
-          </button>
-        </div> -->
+    <div class="jumbotron-image">
+      <!-- <img src="assets/images/jumbotron2.png" alt="" /> -->
+      <video autoplay playsinline loop>
+        <source src="assets/globe.webm" type="video/webm" />
+      </video>
+    </div>
+    <section class="container section-split" ngbScrollSpyFragment="1">
+      <div class="col-8">
+        <h3 class="section-header text-white mb-4">
+          {{ homepageData?.homepage?.title }}
+        </h3>
+        <h5 class="title-description text-white mb-4">
+          {{ homepageData?.homepage?.subTitle }}
+        </h5>
+        <div class="col-8 row pt-2">
+          <div class="col-4 d-flex flex-column stats">
+            <h4>{{ homepageData?.homepage?.productCount }}</h4>
+            <p class="m-0">{{ homepageData?.homepage?.productCountTitle }}</p>
+          </div>
+          <div class="col-4 d-flex flex-column stats">
+            <h4>{{ homepageData?.homepage?.serviceCount }}</h4>
+            <p class="m-0">{{ homepageData?.homepage?.serviceCountTitle }}</p>
+          </div>
+          <div class="col-4 d-flex flex-column stats">
+            <h4>{{ homepageData?.homepage?.partnerCount }}</h4>
+            <p class="m-0">{{ homepageData?.homepage?.partnerCountTitle }}</p>
+          </div>
 
-        <div class="col-12 d-flex mt-5">
-          <button
-            class="button-transparent-gradient-border be-vietnam-pro-thin"
-          >
-            <span>Read more</span>
-          </button>
+          <div class="col-12 d-flex mt-5">
+            <button
+              class="button-transparent-gradient-border be-vietnam-pro-thin"
+            >
+              <span>{{ homepageData?.homepage?.btnDetailText }}</span>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="partners-carousel section-split" ngbScrollSpyFragment="2">
-    <img src="assets/images/techno_left.png" alt="" />
-    <div class="slider">
-      <div class="slide-track" [ngStyle]="{ '--quantity': partners.length }">
-        <div *ngFor="let item of partners; let i = index" class="slide">
+    <section class="partners-carousel section-split" ngbScrollSpyFragment="2">
+      <img src="assets/images/techno_left.png" alt="" />
+      <div class="slider">
+        <div
+          class="slide-track"
+          [ngStyle]="{ '--quantity': homepageData?.partners.length }"
+        >
           <div
-            class="inner w-100 h-100"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl(item)
-            }"
-          ></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container section-split about-us" ngbScrollSpyFragment="3">
-    <div class="section-content d-flex">
-      <div class="col-6">
-        <div class="about-us-images d-flex">
-          <div class="image-container">
+            *ngFor="let item of homepageData?.partners; let i = index"
+            class="slide"
+          >
             <div
-              class="inner-image-wrapper"
+              class="inner w-100 h-100"
               [ngStyle]="{
-                '--backgroundImgUrl': getImageUrl(
-                  'assets/images/about-us1.png'
-                ),
-                '--width': '480px',
-                '--height': '720px'
+                '--backgroundImgUrl': getImageUrl(item?.filePath)
               }"
             ></div>
           </div>
-          <div
-            class="image-container"
-            [ngStyle]="{
-              '--position': 'relative',
-              '--top': '360px',
-              '--right': '300px'
-            }"
-          >
+        </div>
+      </div>
+    </section>
+
+    <section class="container section-split about-us" ngbScrollSpyFragment="3">
+      <div class="section-content d-flex">
+        <div class="col-6">
+          <div class="about-us-images d-flex">
+            <div class="image-container">
+              <div
+                class="inner-image-wrapper"
+                [ngStyle]="{
+                  '--backgroundImgUrl': getImageUrl(
+                    homepageData?.homepage?.aboutSectionOtherImagePath
+                  ),
+                  '--width': '480px',
+                  '--height': '720px'
+                }"
+              ></div>
+            </div>
             <div
-              class="inner-image-wrapper"
+              class="image-container"
               [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/about-us2.png'),
+                '--position': 'relative',
+                '--top': '360px',
+                '--right': '300px'
+              }"
+            >
+              <div
+                class="inner-image-wrapper"
+                [ngStyle]="{
+              '--backgroundImgUrl': getImageUrl(homepageData?.homepage?.aboutSectionMainImagePath),
               '--width': '420px',
               '--height': '420px',
             }"
-            ></div>
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h3 class="section-title">
+            <b>{{ homepageData?.homepage?.aboutSectionTitle }}</b>
+          </h3>
+          <h3 class="section-header text-white">
+            {{ homepageData?.homepage?.aboutSectionSubTitle }}
+          </h3>
+          <h3 class="section-description text-white">
+            {{ homepageData?.homepage?.aboutSectionDescription }}
+          </h3>
+
+          <div class="col-12 mt-5">
+            <button
+              class="button-transparent-gradient-border be-vietnam-pro-thin"
+            >
+              <span>{{ homepageData?.homepage?.btnAboutDetailText }}</span>
+            </button>
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <h3 class="section-title"><b>About us</b></h3>
-        <h3 class="section-header text-white">
-          Driving Innovation Through Expertise
-        </h3>
-        <h3 class="section-description text-white">
-          IPtech is a forward-thinking IT company dedicated to delivering smart,
-          secure, and scalable technology solutions. With a team of experienced
-          professionals, we help businesses navigate the digital landscape with
-          confidence.  Many desktop publishing packages and web page editors now
-          use Lorem Ipsum as their default model text, and a search for 'lorem
-          ipsum' will uncover many web sites still in their infancy. Various
-          versions have evolved over the years, sometimes by accident, sometimes
-          on purpose (injected humour and the like).
-        </h3>
+    </section>
 
-        <div class="col-12 mt-5">
-          <button
-            class="button-transparent-gradient-border be-vietnam-pro-thin"
-          >
-            <span>Read more</span>
-          </button>
+    <section class="container section-split services" ngbScrollSpyFragment="4">
+      <h3 class="section-title text-center">
+        <b>{{ homepageData?.homepage?.serviceSectionTitle }}</b>
+      </h3>
+      <h3 class="section-header text-white text-center">
+        {{ homepageData?.homepage?.serviceSectionSubTitle }}
+      </h3>
+      <div class="row row-gap-5 mt-5">
+        <!-- loop this -->
+        <div
+          class="col-6"
+          *ngFor="let item of homepageData?.servicesList; let i = index"
+        >
+          <div class="service-card">
+            <div class="card-left">
+              <div
+                class="card-image"
+                [ngStyle]="{
+                  '--backgroundImgUrl': getImageUrl(item?.iconPath)
+                }"
+              ></div>
+              <div class="card-number">{{ i < 10 ? "0" : "" }}{{ i + 1 }}</div>
+            </div>
+            <div class="card-right">
+              <div>
+                <h4 class="card-title">{{ item?.title }}</h4>
+                <p class="card-description m-0 pt-3">
+                  {{ item?.shortDescription }}
+                </p>
+              </div>
+              <div class="w-100 d-flex justify-content-start m-0">
+                <button class="button-transparent-gradient-border">
+                  <span>Explore service</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="container section-split services" ngbScrollSpyFragment="4">
-    <h3 class="section-title text-center"><b>Services</b></h3>
-    <h3 class="section-header text-white text-center">
-      Empowering Your Business with Cutting-Edge IT Solutions
-    </h3>
-    <div class="row row-gap-5 mt-5">
-      <div class="col-6">
-        <div class="service-card">
-          <div class="card-left">
+    <section class="customers-carousel section-split" ngbScrollSpyFragment="5">
+      <img src="assets/images/techno_right.png" alt="" />
+      <div class="container">
+        <h5 class="carousel-header be-vietnam-pro-bold text-white">
+          {{ homepageData?.homepage?.customerSectionTitle }}
+        </h5>
+      </div>
+      <div class="slider">
+        <div
+          class="slide-track"
+          [ngStyle]="{ '--quantity': homepageData?.customers.length }"
+        >
+          <div *ngFor="let item of homepageData?.customers" class="slide">
             <div
-              class="card-image"
+              class="inner w-100 h-100"
               [ngStyle]="{
-                '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
+                '--backgroundImgUrl': getImageUrl(item?.filePath)
               }"
             ></div>
-            <div class="card-number">01</div>
-          </div>
-          <div class="card-right">
-            <div>
-              <h4 class="card-title">Custom Software Development</h4>
-              <p class="card-description m-0 pt-3">
-                Tailored software solutions built to meet your business needs
-                and accelerate growth. Many desktop publishing packages and web
-                page editors now use model text, many web sites still in their
-                infancy.
-              </p>
-            </div>
-            <div class="w-100 d-flex justify-content-start m-0">
-              <button class="button-transparent-gradient-border">
-                <span>Explore service</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="service-card">
-          <div class="card-left">
-            <div
-              class="card-image"
-              [ngStyle]="{
-                '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
-              }"
-            ></div>
-            <div class="card-number">01</div>
-          </div>
-          <div class="card-right">
-            <div>
-              <h4 class="card-title">Custom Software Development</h4>
-              <p class="card-description m-0 pt-3">
-                Tailored software solutions built to meet your business needs
-                and accelerate growth. Many desktop publishing packages and web
-                page editors now use model text, many web sites still in their
-                infancy.
-              </p>
-            </div>
-            <div class="w-100 d-flex justify-content-start m-0">
-              <button class="button-transparent-gradient-border">
-                <span>Explore service</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-6">
-        <div class="service-card">
-          <div class="card-left">
-            <div
-              class="card-image"
-              [ngStyle]="{
-                '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
-              }"
-            ></div>
-            <div class="card-number">01</div>
-          </div>
-          <div class="card-right">
-            <div>
-              <h4 class="card-title">Custom Software Development</h4>
-              <p class="card-description m-0 pt-3">
-                Tailored software solutions built to meet your business needs
-                and accelerate growth. Many desktop publishing packages and web
-                page editors now use model text, many web sites still in their
-                infancy.
-              </p>
-            </div>
-            <div class="w-100 d-flex justify-content-start m-0">
-              <button class="button-transparent-gradient-border">
-                <span>Explore service</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="customers-carousel section-split" ngbScrollSpyFragment="5">
-    <img src="assets/images/techno_right.png" alt="" />
-    <div class="container">
-      <h5 class="carousel-header be-vietnam-pro-bold text-white">Customers</h5>
-    </div>
-    <div class="slider">
-      <div class="slide-track" [ngStyle]="{ '--quantity': partners.length }">
-        <div *ngFor="let item of partners; let i = index" class="slide">
-          <div
-            class="inner w-100 h-100"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl(item)
-            }"
-          ></div>
-        </div>
+    <section class="container section-split" ngbScrollSpyFragment="6">
+      <h3 class="section-title text-center">
+        <b>{{ homepageData?.homepage?.productSectionTitle }}</b>
+      </h3>
+      <h3 class="section-header text-white text-center">
+        {{ homepageData?.homepage?.productSectionSubTitle }}
+      </h3>
+      <div class="mt-5">
+        <app-carousel [items]="homepageData?.servicesList"></app-carousel>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="container section-split" ngbScrollSpyFragment="6">
-    <h3 class="section-title text-center"><b>Products</b></h3>
-    <h3 class="section-header text-white text-center">
-      Innovative Digital Solutions Built to Perform
-    </h3>
-    <div class="mt-5">
-      <app-carousel></app-carousel>
-    </div>
-  </section>
-
-  <section
-    class="get-in-touch-with-us section-split container"
-    ngbScrollSpyFragment="7"
-  >
-    <div class="row">
-      <div class="col-lg-5 col-12 left">
-        <h3 class="section-title"><b>Contact us</b></h3>
-        <h2 class="section-header text-white">Get in Touch with Us</h2>
-        <p class="section-description text-white text-lg-start">
-          Whether you have a question, need a custom tech solution, or want to
-          start a project — our team is ready to help. Reach out and let’s build
-          something great together.
-        </p>
-        <div class="info-container">
-          <div class="row gy-4 pt-4">
-            <div class="col-lg-12 col-md-6 col-12">
-              <div
-                class="info-card d-flex flex-row align-items-center"
-                style="gap: 14px"
-              >
-                <div class="info-image-wrapper">
-                  <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div>
-                  <h3 class="m-0 text-break">Location:</h3>
-                  <p class="m-0 text-break">Baku city, A 101</p>
+    <section
+      class="get-in-touch-with-us section-split container"
+      ngbScrollSpyFragment="7"
+    >
+      <div class="row">
+        <div class="col-lg-5 col-12 left">
+          <h3 class="section-title">
+            <b>{{ homepageData?.contacts?.title }}</b>
+          </h3>
+          <h2 class="section-header text-white">
+            {{ homepageData?.contacts?.subTitle }}
+          </h2>
+          <p class="section-description text-white text-lg-start">
+            {{ homepageData?.contacts?.shortDescription }}
+          </p>
+          <div class="info-container">
+            <div class="row gy-4 pt-4">
+              <div class="col-lg-12 col-md-6 col-12">
+                <div
+                  class="info-card d-flex flex-row align-items-center"
+                  style="gap: 14px"
+                >
+                  <div class="info-image-wrapper">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <h3 class="m-0 text-break">
+                      {{ homepageData?.contacts?.lblAddressText }}:
+                    </h3>
+                    <p class="m-0 text-break">
+                      {{ homepageData?.contacts?.address }}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-12 col-md-6 col-12">
-              <div
-                class="info-card d-flex flex-row align-items-center"
-                style="gap: 14px"
-              >
-                <div class="info-image-wrapper">
-                  <i class="fa-solid fa-clock"></i>
-                </div>
-                <div>
-                  <h3 class="m-0 text-break">Opening hours:</h3>
-                  <p class="m-0 text-break">9AM - 8PM</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 col-md-6 col-12">
-              <div
-                class="info-card d-flex flex-row align-items-center"
-                style="gap: 14px"
-              >
-                <div class="info-image-wrapper">
-                  <i class="fa-solid fa-phone"></i>
-                </div>
-                <div>
-                  <h3 class="m-0 text-break">Contact:</h3>
-                  <p class="m-0 text-break">+994 111 11 11</p>
+              <div class="col-lg-12 col-md-6 col-12">
+                <div
+                  class="info-card d-flex flex-row align-items-center"
+                  style="gap: 14px"
+                >
+                  <div class="info-image-wrapper">
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                  <div>
+                    <h3 class="m-0 text-break">
+                      {{ homepageData?.contacts?.lblOpeningHoursText }}:
+                    </h3>
+                    <p class="m-0 text-break">
+                      {{ homepageData?.contacts?.openingHours }}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-12 col-md-6 col-12">
-              <div
-                class="info-card d-flex flex-row align-items-center"
-                style="gap: 14px"
-              >
-                <div class="info-image-wrapper">
-                  <i class="fa-solid fa-envelope"></i>
+              <div class="col-lg-12 col-md-6 col-12">
+                <div
+                  class="info-card d-flex flex-row align-items-center"
+                  style="gap: 14px"
+                >
+                  <div class="info-image-wrapper">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <h3 class="m-0 text-break">
+                      {{ homepageData?.contacts?.lblContactText }}:
+                    </h3>
+                    <p class="m-0 text-break">
+                      {{ homepageData?.contacts?.contactNumber }}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="m-0 text-break">Email:</h3>
-                  <p class="m-0 text-break">test&#64;iptech.com</p>
+              </div>
+              <div class="col-lg-12 col-md-6 col-12">
+                <div
+                  class="info-card d-flex flex-row align-items-center"
+                  style="gap: 14px"
+                >
+                  <div class="info-image-wrapper">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h3 class="m-0 text-break">
+                      {{ homepageData?.contacts?.lblEmailText }}:
+                    </h3>
+                    <p class="m-0 text-break">
+                      {{ homepageData?.contacts?.email }}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-7 position-relative">
-        <img
-          class="form-background"
-          src="assets/images/form-background.png"
-          alt=""
-        />
-        <div class="form-wrapper">
-          <form
-            class="col-12 row"
-            [formGroup]="appealForm"
-            *ngIf="!requestSent"
-          >
-            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-              <label class="form-label"
-                >Name, surname <span class="required-mark">*</span></label
-              >
-              <input
-                type="email"
-                class="form-control"
-                formControlName="fullName"
-              />
-              <!--Required message-->
-              <div
-                class="validationMessage"
-                *ngIf="
+        <div class="col-lg-7 position-relative">
+          <img
+            class="form-background"
+            src="assets/images/form-background.png"
+            alt=""
+          />
+          <div class="form-wrapper">
+            <form
+              class="col-12 row"
+              [formGroup]="appealForm"
+              *ngIf="!requestSent"
+            >
+              <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+                <label class="form-label"
+                  >{{ "contactUsData.nameAndSurname" | translate }}
+                  <span class="required-mark">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="fullName"
+                />
+                <!--Required message-->
+                <div
+                  class="validationMessage"
+                  *ngIf="
                 appealForm.get('fullName')?.errors?.['required'] &&
                 appealForm.get('fullName')?.touched
               "
-              >
-                <p class="p-0 m-0">This field is required.</p>
+                >
+                  <p class="p-0 m-0">This field is required.</p>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-              <label class="form-label"
-                >Email <span class="required-mark">*</span></label
-              >
-              <input
-                type="email"
-                class="form-control"
-                formControlName="email"
-              />
-              <!--Required message-->
-              <div
-                class="validationMessage"
-                *ngIf="
+              <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+                <label class="form-label"
+                  >{{ "contactUsData.email" | translate }}
+                  <span class="required-mark">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                />
+                <!--Required message-->
+                <div
+                  class="validationMessage"
+                  *ngIf="
                    appealForm.get('email')?.errors?.['required'] &&
                    appealForm.get('email')?.touched
                  "
-              >
-                <p class="p-0 m-0">This field is required.</p>
+                >
+                  <p class="p-0 m-0">This field is required.</p>
+                </div>
+                <div
+                  class="validationMessage"
+                  *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
+                >
+                  <p class="p-0 m-0">Please enter email in correct format.</p>
+                </div>
               </div>
-              <div
-                class="validationMessage"
-                *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
-              >
-                <p class="p-0 m-0">Please enter email in correct format.</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-              <label class="form-label"
-                >Phone <span class="required-mark">*</span></label
-              >
-              <input
-                type="email"
-                class="form-control"
-                formControlName="contactNumber"
-              />
-              <!--Required message-->
-              <div
-                class="validationMessage"
-                *ngIf="
+              <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+                <label class="form-label"
+                  >{{ "contactUsData.contactNumber" | translate }}
+                  <span class="required-mark">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="contactNumber"
+                />
+                <!--Required message-->
+                <div
+                  class="validationMessage"
+                  *ngIf="
                    appealForm.get('contactNumber')?.errors?.['required'] &&
                    appealForm.get('contactNumber')?.touched
                  "
-              >
-                <p class="p-0 m-0">This field is required.</p>
+                >
+                  <p class="p-0 m-0">This field is required.</p>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-              <label class="form-label"
-                >Subject <span class="required-mark">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                formControlName="subject"
-              />
+              <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+                <label class="form-label"
+                  >{{ "contactUsData.subject" | translate }}
+                  <span class="required-mark">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="subject"
+                />
 
-              <div
-                class="validationMessage"
-                *ngIf="
+                <div
+                  class="validationMessage"
+                  *ngIf="
                       appealForm.get('subject')?.errors?.['required'] &&
                       appealForm.get('subject')?.touched
                     "
-              >
-                <p class="p-0 m-0">This field is required.</p>
+                >
+                  <p class="p-0 m-0">This field is required.</p>
+                </div>
               </div>
-            </div>
-            <div class="col-12">
-              <label class="form-label"
-                >Message <span class="required-mark">*</span></label
-              >
-              <textarea
-                class="form-control"
-                rows="3"
-                formControlName="content"
-              ></textarea>
-              <!--Required message-->
-              <div
-                class="validationMessage"
-                *ngIf="
+              <div class="col-12">
+                <label class="form-label"
+                  >{{ "contactUsData.message" | translate }}
+                  <span class="required-mark">*</span></label
+                >
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  formControlName="content"
+                ></textarea>
+                <!--Required message-->
+                <div
+                  class="validationMessage"
+                  *ngIf="
                    appealForm.get('content')?.errors?.['required'] &&
                    appealForm.get('content')?.touched
                  "
-              >
-                <p class="p-0 m-0">This field is required.</p>
+                >
+                  <p class="p-0 m-0">This field is required.</p>
+                </div>
               </div>
-            </div>
-            <div class="col-12 mt-4">
-              <button
-                class="gradient-button col-md-6 col-12"
-                type="button"
-                (click)="submitAppeal()"
-              >
-                <span>Send</span>
-              </button>
-            </div>
-          </form>
+              <div class="col-12 mt-4">
+                <button
+                  class="gradient-button col-md-6 col-12"
+                  type="button"
+                  (click)="submitAppeal()"
+                >
+                  <span>{{ "contactUsData.send" | translate }} </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
+          <img src="assets/images/send-email.png" alt="" />
+          <div class="content">
+            <h5>Request sent!</h5>
+            <p>We will contact you soon!</p>
+          </div>
         </div>
       </div>
-      <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
-        <img src="assets/images/send-email.png" alt="" />
-        <div class="content">
-          <h5>Request sent!</h5>
-          <p>We will contact you soon!</p>
+    </section>
+
+    <app-footer></app-footer>
+  </main>
+
+  <nav class="aside-nav">
+    <ul class="list-unstyled d-flex flex-column" [ngbScrollSpyMenu]="s">
+      <li ngbScrollSpyItem="1">
+        <div class="outer">
+          <div class="inner"></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <app-footer></app-footer>
-</main>
-
-<nav class="aside-nav">
-  <ul class="list-unstyled d-flex flex-column" [ngbScrollSpyMenu]="s">
-    <li ngbScrollSpyItem="1">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-    <li ngbScrollSpyItem="2">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-    <li ngbScrollSpyItem="3">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-    <li ngbScrollSpyItem="4">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-    <li ngbScrollSpyItem="5">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-    <li ngbScrollSpyItem="6">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-    <li ngbScrollSpyItem="7">
-      <div class="outer">
-        <div class="inner"></div>
-      </div>
-    </li>
-  </ul>
-</nav>
+      </li>
+      <li ngbScrollSpyItem="2">
+        <div class="outer">
+          <div class="inner"></div>
+        </div>
+      </li>
+      <li ngbScrollSpyItem="3">
+        <div class="outer">
+          <div class="inner"></div>
+        </div>
+      </li>
+      <li ngbScrollSpyItem="4">
+        <div class="outer">
+          <div class="inner"></div>
+        </div>
+      </li>
+      <li ngbScrollSpyItem="5">
+        <div class="outer">
+          <div class="inner"></div>
+        </div>
+      </li>
+      <li ngbScrollSpyItem="6">
+        <div class="outer">
+          <div class="inner"></div>
+        </div>
+      </li>
+      <li ngbScrollSpyItem="7">
+        <div class="outer">
+          <div class="inner"></div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</ng-container>
