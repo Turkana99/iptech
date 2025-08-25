@@ -5,16 +5,16 @@ import { Languages } from '../languages';
 
 export const languageInterceptor: HttpInterceptorFn = (request, next) => {
   const langService = inject(LanguageService);
-  const culture = langService.getLanguage()?.culture || Languages.AZ;
+  const code = langService.getLanguage()?.code || Languages.AZ;
 
-  request = addLanguage(request, culture);
+  request = addLanguage(request, code);
 
   function addLanguage(
     request: HttpRequest<any>,
-    culture: string
+    code: string
   ): HttpRequest<any> {
     return request.clone({
-      setHeaders: { Language: culture },
+      setHeaders: { Language: code },
     });
   }
 

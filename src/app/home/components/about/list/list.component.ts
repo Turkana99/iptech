@@ -4,7 +4,7 @@ import { BreadcrumbService } from '../../../../core/services/breadcrumb.service'
 import { AppRoutes } from '../../../home.routes';
 import { Observable } from 'rxjs';
 import { LanguageService } from '../../../../core/services/language.service';
-import { AboutService } from '../../../../core/services/about';
+import { AboutService } from '../../../../core/services/about.service';
 
 @Component({
   selector: 'app-list',

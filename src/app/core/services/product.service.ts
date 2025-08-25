@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   getProductPageData() {
-    return this.http.get(environment.ProductPages?.get());
+    return this.http.get(environment.ProductPages?.get);
   }
 
   getBySlug(slug: string) {

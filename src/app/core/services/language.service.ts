@@ -12,11 +12,11 @@ export class LanguageService {
     const lang = localStorage.getItem('language');
     this._language = !!lang
       ? JSON.parse(lang)
-      : { displayName: 'Az', culture: Languages.AZ };
+      : { name: 'Az', code: Languages.AZ };
   }
 
   getAll() {
-    return this.http.get(environment?.Languages.getAll);
+    return this.http.get(environment.Languages.getAll);
   }
 
   setLanguage(language: any) {
@@ -31,7 +31,7 @@ export class LanguageService {
     const currentLang = this.getLanguage();
 
     return (
-      this.constantNavItem[currentLang?.culture] ||
+      this.constantNavItem[currentLang?.code] ||
       this.constantNavItem[Languages.AZ]
     );
   }

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
 import { AppRoutes } from '../../../home.routes';
-import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -15,13 +14,14 @@ import {
   defaultPaginatorOptions,
   IPaginatorOptions,
 } from '../../../../core/consts';
-import { ProductService } from '../../../../core/services/product';
+import { ProductService } from '../../../../core/services/product.service';
 import { LanguageService } from '../../../../core/services/language.service';
+import { MaterialModule } from '../../../../core/material.module';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RouterModule, CommonModule, TranslatePipe],
+  imports: [RouterModule, CommonModule, MaterialModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })
@@ -43,15 +43,11 @@ export class ListComponent implements OnInit {
     ]);
   }
   ngOnInit(): void {
-    this.data$ = combineLatest([this.route.params, this.page$]).pipe(
-      switchMap(([params, page]) => {
+    this.data$ = this.page$.pipe(
+      switchMap((page) => {
         return this.dataService.getAllData(page);
-      }),
-      tap((response: any) => {
-        console.log('response', response);
       })
     );
-    console.log(' this.data$', this.data$);
   }
 
   onPageChange(event: any) {

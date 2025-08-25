@@ -47,7 +47,7 @@
       </li>
     </ul>
 
-    <div class="d-none d-lg-flex">
+    <div class="d-none d-lg-flex" *ngIf="data$ | async">
       <div class="d-flex align-items-center">
         <label for="langBtn">{{ currentLang }}</label>
         <button
@@ -67,7 +67,7 @@
           *ngFor="let item of langs"
           (click)="changeLanguage(item)"
         >
-          <span styl>{{ item.displayName }}</span>
+          <span styl>{{ item.name }}</span>
         </button>
       </mat-menu>
     </div>

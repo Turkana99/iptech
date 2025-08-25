@@ -1,6 +1,6 @@
 <main>
   <!-- About Section -->
-  <section class="container section-split about-us" ngbScrollSpyFragment="3">
+  <section class="container section-split about-us">
     <div class="section-content d-flex">
       <div class="col-6">
         <div class="about-us-images d-flex">
@@ -100,7 +100,7 @@
                 class="commitment-image-wrapper"
                 [ngStyle]="{
                   '--backgroundImgUrl': getImageUrl(
-                    q.imagePath || 'assets/images/commitment_img.png'
+                    q.filePath || 'assets/images/commitment_img.png'
                   ),
                   '--width': '70px',
                   '--height': '70px'
@@ -141,7 +141,7 @@
                 class="commitment-image-wrapper"
                 [ngStyle]="{
                   '--backgroundImgUrl': getImageUrl(
-                    q.imagePath || 'assets/images/commitment_img.png'
+                    q.filePath || 'assets/images/commitment_img.png'
                   ),
                   '--width': '70px',
                   '--height': '70px'

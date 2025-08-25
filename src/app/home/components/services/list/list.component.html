@@ -1,322 +1,271 @@
-<section class="container services mt-5">
-  <h3 class="section-title text-center"><b>Services</b></h3>
-  <h3 class="section-header text-white text-center">
-    Empowering Your Business with Cutting-Edge IT Solutions
-  </h3>
-  <div class="row row-gap-5 mt-5">
-    <div class="col-6">
-      <div class="service-card">
-        <div class="card-left">
-          <div
-            class="card-image"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
-            }"
-          ></div>
-          <div class="card-number">01</div>
-        </div>
-        <div class="card-right">
-          <div>
-            <h4 class="card-title">Custom Software Development</h4>
-            <p class="card-description m-0 pt-3">
-              Tailored software solutions built to meet your business needs and
-              accelerate growth. Many desktop publishing packages and web page
-              editors now use model text, many web sites still in their infancy.
-            </p>
+<ng-container *ngIf="data$ | async as data">
+  <section class="container services mt-5 mb-4">
+    <h3 class="section-title text-center">
+      <b>{{ data.servicePage?.pageTitle }}</b>
+    </h3>
+    <h3 class="section-header text-white text-center">
+      {{ data.servicePage?.description }}
+    </h3>
+    <div class="row row-gap-5 mt-5">
+      <div
+        class="col-6"
+        *ngFor="let item of data.services?.items; let i = index"
+      >
+        <div class="service-card">
+          <div class="card-left">
+            <div
+              class="card-image"
+              [ngStyle]="{
+                '--backgroundImgUrl': getImageUrl(item?.iconPath)
+              }"
+            ></div>
+            <div class="card-number">0{{ i + 1 }}</div>
           </div>
-          <div class="w-100 d-flex justify-content-start m-0">
-            <button class="button-transparent-gradient-border">
-              <span>Explore service</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="service-card">
-        <div class="card-left">
-          <div
-            class="card-image"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
-            }"
-          ></div>
-          <div class="card-number">01</div>
-        </div>
-        <div class="card-right">
-          <div>
-            <h4 class="card-title">Custom Software Development</h4>
-            <p class="card-description m-0 pt-3">
-              Tailored software solutions built to meet your business needs and
-              accelerate growth. Many desktop publishing packages and web page
-              editors now use model text, many web sites still in their infancy.
-            </p>
-          </div>
-          <div class="w-100 d-flex justify-content-start m-0">
-            <button class="button-transparent-gradient-border">
-              <span>Explore service</span>
-            </button>
+          <div class="card-right">
+            <div>
+              <h4 class="card-title">{{ item?.title }}</h4>
+              <p class="card-description m-0 pt-3">
+                {{ item?.shortDescription }}
+              </p>
+            </div>
+            <div class="w-100 d-flex justify-content-start m-0">
+              <button
+                class="button-transparent-gradient-border"
+                [routerLink]="['/home', 'service', item.slug]"
+              >
+                <span>Explore service</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-6">
-      <div class="service-card">
-        <div class="card-left">
-          <div
-            class="card-image"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
-            }"
-          ></div>
-          <div class="card-number">01</div>
-        </div>
-        <div class="card-right">
-          <div>
-            <h4 class="card-title">Custom Software Development</h4>
-            <p class="card-description m-0 pt-3">
-              Tailored software solutions built to meet your business needs and
-              accelerate growth. Many desktop publishing packages and web page
-              editors now use model text, many web sites still in their infancy.
-            </p>
-          </div>
-          <div class="w-100 d-flex justify-content-start m-0">
-            <button class="button-transparent-gradient-border">
-              <span>Explore service</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="service-card">
-        <div class="card-left">
-          <div
-            class="card-image"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl('assets/images/card-logo.png')
-            }"
-          ></div>
-          <div class="card-number">01</div>
-        </div>
-        <div class="card-right">
-          <div>
-            <h4 class="card-title">Custom Software Development</h4>
-            <p class="card-description m-0 pt-3">
-              Tailored software solutions built to meet your business needs and
-              accelerate growth. Many desktop publishing packages and web page
-              editors now use model text, many web sites still in their infancy.
-            </p>
-          </div>
-          <div class="w-100 d-flex justify-content-start m-0">
-            <button class="button-transparent-gradient-border">
-              <span>Explore service</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section
-  class="get-in-touch-with-us section-split container"
-  ngbScrollSpyFragment="7"
->
-  <div class="row">
-    <div class="col-lg-5 col-12 left">
-      <h3 class="section-title"><b>Contact us</b></h3>
-      <h2 class="section-header text-white">Get in Touch with Us</h2>
-      <p class="section-description text-white text-lg-start">
-        Whether you have a question, need a custom tech solution, or want to
-        start a project — our team is ready to help. Reach out and let’s build
-        something great together.
-      </p>
-      <div class="info-container">
-        <div class="row gy-4 pt-4">
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <h3 class="m-0 text-break">Location:</h3>
-                <p class="m-0 text-break">Baku city, A 101</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div>
-                <h3 class="m-0 text-break">Opening hours:</h3>
-                <p class="m-0 text-break">9AM - 8PM</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <h3 class="m-0 text-break">Contact:</h3>
-                <p class="m-0 text-break">+994 111 11 11</p>
+  <ng-container *ngIf="data.services?.count">
+    <div class="w-100" *ngIf="page$ | async as page">
+      <p-paginator
+        (onPageChange)="onPageChange($event)"
+        [first]="page.first"
+        [pageLinkSize]="page.pageSize"
+        [rows]="page.rows"
+        [totalRecords]="data.products?.count"
+        [showFirstLastIcon]="true"
+      />
+    </div>
+  </ng-container>
+
+  <section
+    class="get-in-touch-with-us section-split container"
+    ngbScrollSpyFragment="7"
+  >
+    <div class="row">
+      <div class="col-lg-5 col-12 left">
+        <h3 class="section-title"><b>Contact us</b></h3>
+        <h2 class="section-header text-white">Get in Touch with Us</h2>
+        <p class="section-description text-white text-lg-start">
+          Whether you have a question, need a custom tech solution, or want to
+          start a project — our team is ready to help. Reach out and let’s build
+          something great together.
+        </p>
+        <div class="info-container">
+          <div class="row gy-4 pt-4">
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">Location:</h3>
+                  <p class="m-0 text-break">Baku city, A 101</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-envelope"></i>
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">Opening hours:</h3>
+                  <p class="m-0 text-break">9AM - 8PM</p>
+                </div>
               </div>
-              <div>
-                <h3 class="m-0 text-break">Email:</h3>
-                <p class="m-0 text-break">test&#64;iptech.com</p>
+            </div>
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">Contact:</h3>
+                  <p class="m-0 text-break">+994 111 11 11</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">Email:</h3>
+                  <p class="m-0 text-break">test&#64;iptech.com</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-7 position-relative">
-      <img
-        class="form-background"
-        src="assets/images/form-background.png"
-        alt=""
-      />
-      <div class="form-wrapper">
-        <form class="col-12 row" [formGroup]="appealForm" *ngIf="!requestSent">
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >Name, surname <span class="required-mark">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              formControlName="fullName"
-            />
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+      <div class="col-lg-7 position-relative">
+        <img
+          class="form-background"
+          src="assets/images/form-background.png"
+          alt=""
+        />
+        <div class="form-wrapper">
+          <form
+            class="col-12 row"
+            [formGroup]="appealForm"
+            *ngIf="!requestSent"
+          >
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >Name, surname <span class="required-mark">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="fullName"
+              />
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                 appealForm.get('fullName')?.errors?.['required'] &&
                 appealForm.get('fullName')?.touched
               "
-            >
-              <p class="p-0 m-0">This field is required.</p>
+              >
+                <p class="p-0 m-0">This field is required.</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >Email <span class="required-mark">*</span></label
-            >
-            <input type="email" class="form-control" formControlName="email" />
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >Email <span class="required-mark">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+              />
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                    appealForm.get('email')?.errors?.['required'] &&
                    appealForm.get('email')?.touched
                  "
-            >
-              <p class="p-0 m-0">This field is required.</p>
+              >
+                <p class="p-0 m-0">This field is required.</p>
+              </div>
+              <div
+                class="validationMessage"
+                *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
+              >
+                <p class="p-0 m-0">Please enter email in correct format.</p>
+              </div>
             </div>
-            <div
-              class="validationMessage"
-              *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
-            >
-              <p class="p-0 m-0">Please enter email in correct format.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >Phone <span class="required-mark">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              formControlName="contactNumber"
-            />
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >Phone <span class="required-mark">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="contactNumber"
+              />
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                    appealForm.get('contactNumber')?.errors?.['required'] &&
                    appealForm.get('contactNumber')?.touched
                  "
-            >
-              <p class="p-0 m-0">This field is required.</p>
+              >
+                <p class="p-0 m-0">This field is required.</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >Subject <span class="required-mark">*</span></label
-            >
-            <input type="text" class="form-control" formControlName="subject" />
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >Subject <span class="required-mark">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="subject"
+              />
 
-            <div
-              class="validationMessage"
-              *ngIf="
+              <div
+                class="validationMessage"
+                *ngIf="
                       appealForm.get('subject')?.errors?.['required'] &&
                       appealForm.get('subject')?.touched
                     "
-            >
-              <p class="p-0 m-0">This field is required.</p>
+              >
+                <p class="p-0 m-0">This field is required.</p>
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <label class="form-label"
-              >Message <span class="required-mark">*</span></label
-            >
-            <textarea
-              class="form-control"
-              rows="3"
-              formControlName="content"
-            ></textarea>
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+            <div class="col-12">
+              <label class="form-label"
+                >Message <span class="required-mark">*</span></label
+              >
+              <textarea
+                class="form-control"
+                rows="3"
+                formControlName="content"
+              ></textarea>
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                    appealForm.get('content')?.errors?.['required'] &&
                    appealForm.get('content')?.touched
                  "
-            >
-              <p class="p-0 m-0">This field is required.</p>
+              >
+                <p class="p-0 m-0">This field is required.</p>
+              </div>
             </div>
-          </div>
-          <div class="col-12 mt-4">
-            <button
-              class="gradient-button col-md-6 col-12"
-              type="button"
-              (click)="submitAppeal()"
-            >
-              <span>Send</span>
-            </button>
-          </div>
-        </form>
+            <div class="col-12 mt-4">
+              <button
+                class="gradient-button col-md-6 col-12"
+                type="button"
+                (click)="submitAppeal()"
+              >
+                <span>Send</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
+        <img src="assets/images/send-email.png" alt="" />
+        <div class="content">
+          <h5>Request sent!</h5>
+          <p>We will contact you soon!</p>
+        </div>
       </div>
     </div>
-    <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
-      <img src="assets/images/send-email.png" alt="" />
-      <div class="content">
-        <h5>Request sent!</h5>
-        <p>We will contact you soon!</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</ng-container>

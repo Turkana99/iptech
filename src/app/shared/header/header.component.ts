@@ -19,43 +19,26 @@ export class HeaderComponent {
   routes = AppRoutes;
   routes$!: Observable<string[]>;
   currentLang!: string;
-  langs: any[] = [
-    {
-      culture: Languages.AZ,
-      displayName: 'Az',
-    },
-    {
-      culture: Languages.EN,
-      displayName: 'En',
-    },
-    {
-      culture: Languages.RU,
-      displayName: 'Ru',
-    },
-  ];
+  langs: any[] = [];
 
   data$ = this.languageService.getAll().pipe(
     tap((response: any) => {
-      this.langs = response;
+      this.langs = response.map((item: any) => {
+        item.name = item.name.toUpperCase();
+        return item;
+      });
       if (!this.languageService.getLanguage()) {
         this.languageService.setLanguage(
           response.find((lang: any) => {
-            return lang.displayName.toLowerCase() === 'az';
+            return lang.name.toLowerCase() === 'az';
           })
         );
       }
 
-      // this.currentLang = this.languageService
-      //   .getLanguage()
-      //   .displayName.toUpperCase();
+      this.currentLang = this.languageService.getLanguage().name.toUpperCase();
     })
   );
-  constructor(private router: Router, public languageService: LanguageService) {
-    //Language API qoshulandan sonra 48-ci setir commentden cixib bu commente girecek
-    this.currentLang = this.languageService
-      .getLanguage()
-      .displayName.toUpperCase();
-  }
+  constructor(public languageService: LanguageService) {}
 
   changeLanguage(language: any) {
     this.languageService.setLanguage(language);

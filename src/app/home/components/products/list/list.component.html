@@ -1,15 +1,16 @@
 <ng-container *ngIf="data$ | async as data">
   <section class="container services mt-5">
-    <h3 class="section-title text-center"><b>{{ data.productPage?.pageTitle }}</b></h3>
+    <h3 class="section-title text-center">
+      <b>{{ data.productPage?.pageTitle }}</b>
+    </h3>
     <h3 class="section-header text-white text-center">
-      {{data.productPage?.description}}
+      {{ data.productPage?.description }}
     </h3>
 
     <div class="row row-gap-5 mt-5">
       <div
         class="col-md-6 col-lg-6 col-sm-12"
         *ngFor="let item of data?.products?.items"
-        [routerLink]="['/home', 'products', item.slug]"
       >
         <div class="product-card">
           <div
@@ -28,10 +29,15 @@
               {{ item.shortDescription }}
             </p>
             <div class="card-tags">
-              <div class="card-tag" *ngFor="let tag of item.tags">{{ tag }}</div>
+              <div class="card-tag" *ngFor="let tag of item.tags">
+                {{ tag }}
+              </div>
             </div>
             <div class="col-12 d-flex">
-              <button class="gradient-button be-vietnam-pro-thin">
+              <button
+                class="gradient-button be-vietnam-pro-thin"
+                [routerLink]="['/home', 'product', item.slug]"
+              >
                 <span>Read more</span>
               </button>
             </div>
@@ -40,4 +46,17 @@
       </div>
     </div>
   </section>
+
+  <ng-container *ngIf="data.products?.count">
+    <div class="w-100" *ngIf="page$ | async as page">
+      <p-paginator
+        (onPageChange)="onPageChange($event)"
+        [first]="page.first"
+        [pageLinkSize]="page.pageSize"
+        [rows]="page.rows"
+        [totalRecords]="data.products?.count"
+        [showFirstLastIcon]="true"
+      />
+    </div>
+  </ng-container>
 </ng-container>

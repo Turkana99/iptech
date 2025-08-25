@@ -15,7 +15,7 @@ export class ServiceService {
   }
 
   getServicePageData() {
-    return this.http.get(environment.ServicePages?.get());
+    return this.http.get(environment.ServicePages?.get);
   }
 
   getBySlug(slug: string) {

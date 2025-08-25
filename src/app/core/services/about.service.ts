@@ -14,7 +14,7 @@ export class AboutService {
   }
 
   getQualities() {
-    return this.http.get(environment?.AboutPages?.getQualitiesForAboutPage);
+    return this.http.get(environment?.Qualities.getByClient);
   }
 
   getAllData() {
