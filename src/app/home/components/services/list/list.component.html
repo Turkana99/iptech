@@ -42,15 +42,15 @@
     </div>
   </section>
 
-  <ng-container *ngIf="data.services?.count">
+ <ng-container *ngIf="data.services?.count">
     <div class="w-100" *ngIf="page$ | async as page">
       <p-paginator
         (onPageChange)="onPageChange($event)"
         [first]="page.first"
         [pageLinkSize]="page.pageSize"
         [rows]="page.rows"
-        [totalRecords]="data.products?.count"
-        [showFirstLastIcon]="true"
+        [totalRecords]="data.services?.count"
+        [showFirstLastIcon]="false"
       />
     </div>
   </ng-container>
@@ -61,8 +61,8 @@
   >
     <div class="row">
       <div class="col-lg-5 col-12 left">
-        <h3 class="section-title"><b>Contact us</b></h3>
-        <h2 class="section-header text-white">Get in Touch with Us</h2>
+        <h3 class="section-title"><b>{{data.contact?.title}}</b></h3>
+        <h2 class="section-header text-white">{{data.contact?.subTitle}}</h2>
         <p class="section-description text-white text-lg-start">
           Whether you have a question, need a custom tech solution, or want to
           start a project — our team is ready to help. Reach out and let’s build
@@ -79,8 +79,8 @@
                   <i class="fa-solid fa-location-dot"></i>
                 </div>
                 <div>
-                  <h3 class="m-0 text-break">Location:</h3>
-                  <p class="m-0 text-break">Baku city, A 101</p>
+                  <h3 class="m-0 text-break">{{data.contact?.lblAddressText}}:</h3>
+                  <p class="m-0 text-break">{{data.contact?.address}}</p>
                 </div>
               </div>
             </div>
@@ -93,8 +93,8 @@
                   <i class="fa-solid fa-clock"></i>
                 </div>
                 <div>
-                  <h3 class="m-0 text-break">Opening hours:</h3>
-                  <p class="m-0 text-break">9AM - 8PM</p>
+                  <h3 class="m-0 text-break">{{data.contact?.lblOpeningHoursText}}:</h3>
+                  <p class="m-0 text-break">{{data.contact?.openingHours}}</p>
                 </div>
               </div>
             </div>
@@ -107,8 +107,8 @@
                   <i class="fa-solid fa-phone"></i>
                 </div>
                 <div>
-                  <h3 class="m-0 text-break">Contact:</h3>
-                  <p class="m-0 text-break">+994 111 11 11</p>
+                  <h3 class="m-0 text-break">{{data.contact?.lblContactText}}:</h3>
+                  <p class="m-0 text-break">{{data.contact?.contactNumber}}</p>
                 </div>
               </div>
             </div>
@@ -121,8 +121,8 @@
                   <i class="fa-solid fa-envelope"></i>
                 </div>
                 <div>
-                  <h3 class="m-0 text-break">Email:</h3>
-                  <p class="m-0 text-break">test&#64;iptech.com</p>
+                  <h3 class="m-0 text-break">{{data.contact?.lblEmailText}}:</h3>
+                  <p class="m-0 text-break">{{data.contact?.email}}</p>
                 </div>
               </div>
             </div>
