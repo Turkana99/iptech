@@ -64,18 +64,10 @@
     <img class="left" src="assets/images/techno_left.png" alt="" />
     <img class="right" src="assets/images/techno_right.png" alt="" />
     <div class="container">
-      <div class="row">
-        <div class="stat-item col-4">
-          <h2>37k+</h2>
-          <p>Products</p>
-        </div>
-        <div class="stat-item col-4">
-          <h2>20k+</h2>
-          <p>Services</p>
-        </div>
-        <div class="stat-item col-4">
-          <h2>99k+</h2>
-          <p>Partners</p>
+      <div class="row" *ngIf="data">
+        <div class="stat-item col-4" *ngFor="let item of data?.statistics">
+          <h2>{{item.valueText}}</h2>
+          <p>{{item.label}}</p>
         </div>
       </div>
     </div>
@@ -87,7 +79,7 @@
       <b>{{ data?.about?.qualitySectionTitle }}</b>
     </h3>
     <h3 class="section-header text-white text-center mb-5">
-      Our Commitment to Excellence at IPTech
+      {{data?.about?.qualitySectionDescription}}
     </h3>
 
     <div class="w-100 row" *ngIf="data">

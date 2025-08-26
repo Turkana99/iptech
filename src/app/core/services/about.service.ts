@@ -17,12 +17,17 @@ export class AboutService {
     return this.http.get(environment?.Qualities.getByClient);
   }
 
+  getStatistics() {
+    return this.http.get(environment.Statistics.getByClient);
+  }
+
   getAllData() {
-    return forkJoin([this.get(), this.getQualities()]).pipe(
-      map(([about, qualities]) => {
+    return forkJoin([this.get(), this.getQualities(), this.getStatistics()]).pipe(
+      map(([about, qualities,statistics]) => {
         return {
           about,
           qualities,
+          statistics
         };
       })
     );
