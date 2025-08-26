@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
 import { AppRoutes } from '../../../home.routes';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductService } from '../../../../core/services/product.service';
 import { LanguageService } from '../../../../core/services/language.service';
 import { Observable, tap } from 'rxjs';
@@ -10,7 +10,7 @@ import { Observable, tap } from 'rxjs';
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })

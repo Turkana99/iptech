@@ -1,32 +1,28 @@
-<section class="container mt-4">
-  <div class="w-100 row">
-    <div class="col-7">
-      <div class="image-container">
-        <div
-          class="inner-image-wrapper"
-          [ngStyle]="{
-            '--backgroundImgUrl': getImageUrl('assets/images/about-us1.png'),
-            '--width': '100%',
-            '--height': '430px'
-          }"
-        ></div>
+<ng-container *ngIf="data$ | async as data">
+  <section class="container mt-4">
+    <div class="w-100 row">
+      <div class="col-7">
+        <div class="image-container">
+          <div
+            class="inner-image-wrapper"
+            [ngStyle]="{
+              '--backgroundImgUrl': getImageUrl(data?.imagePath),
+              '--width': '100%',
+              '--height': '430px'
+            }"
+          ></div>
+        </div>
+      </div>
+      <div class="col-5 d-flex flex-column" style="gap: 30px">
+        <div class="entity" *ngFor="let service of data?.otherServices">
+          <span> {{ service.title }} </span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
       </div>
     </div>
-    <div class="col-5 d-flex flex-column" style="gap: 30px">
-      <div class="entity">
-        <span> IT Consulting & Strategy </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
+  </section>
 
-      <div class="entity">
-        <span> IT Consulting & Strategy </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-
-      <div class="entity">
-        <span> IT Consulting & Strategy </span>
-        <i class="fa-solid fa-chevron-right"></i>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="container news-content mt-5">
+    <div class="ql-container" [innerHTML]="data?.description"></div>
+  </section>
+</ng-container>

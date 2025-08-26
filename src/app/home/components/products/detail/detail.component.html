@@ -14,18 +14,8 @@
         </div>
       </div>
       <div class="col-5 d-flex flex-column" style="gap: 30px">
-        <div class="entity">
-          <span> IT Consulting & Strategy </span>
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-
-        <div class="entity">
-          <span> IT Consulting & Strategy </span>
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-
-        <div class="entity">
-          <span> IT Consulting & Strategy </span>
+        <div class="entity" *ngFor="let product of data?.otherProducts">
+          <span> {{ product.title }} </span>
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
