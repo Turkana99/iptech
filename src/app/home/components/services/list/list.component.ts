@@ -76,9 +76,6 @@ export class ListComponent {
     ]).pipe(
       map(([services, contact, servicePage, homepage]) => {
         return { services, contact, servicePage, homepage };
-      }),
-      tap((data) => {
-        console.log('data', data);
       })
     );
   }

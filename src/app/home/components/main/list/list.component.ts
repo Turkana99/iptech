@@ -54,11 +54,7 @@ export class ListComponent {
   }
 
   ngOnInit() {
-    this.data$ = this.dataService.getAllData().pipe(
-      tap((data: any) => {
-        console.log('data', data);
-      })
-    );
+    this.data$ = this.dataService.getAllData();
     this.initForm();
   }
 
