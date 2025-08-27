@@ -1,7 +1,7 @@
 <ng-container *ngIf="data$ | async as data">
   <section class="container services mt-5">
     <h3 class="section-title text-center">
-      <b>{{ data.productPage?.pageTitle }}</b>
+      <span>{{ data.productPage?.pageTitle }}</span>
     </h3>
     <h3 class="section-header text-white text-center">
       {{ data.productPage?.description }}

@@ -7,8 +7,17 @@
     <app-header></app-header>
 
     <div class="jumbotron-image">
-      <!-- <img src="assets/images/jumbotron2.png" alt="" /> -->
-      <video autoplay playsinline loop>
+      <video
+        #video
+        muted
+        autoplay
+        playsinline
+        loop
+        (canplay)="video.play()"
+        (loadedmetadata)="video.muted = true"
+        poster="assets/images/poster.jpg"
+      >
+        <source src="assets/globe.mp4" type="video/mp4" />
         <source src="assets/globe.webm" type="video/webm" />
       </video>
     </div>
@@ -104,7 +113,7 @@
         </div>
         <div class="col-6">
           <h3 class="section-title">
-            <b>{{ homepageData?.homepage?.aboutSectionTitle }}</b>
+            <span>{{ homepageData?.homepage?.aboutSectionTitle }}</span>
           </h3>
           <h3 class="section-header text-white">
             {{ homepageData?.homepage?.aboutSectionSubTitle }}
@@ -126,7 +135,7 @@
 
     <section class="container section-split services" ngbScrollSpyFragment="4">
       <h3 class="section-title text-center">
-        <b>{{ homepageData?.homepage?.serviceSectionTitle }}</b>
+        <span>{{ homepageData?.homepage?.serviceSectionTitle }}</span>
       </h3>
       <h3 class="section-header text-white text-center">
         {{ homepageData?.homepage?.serviceSectionSubTitle }}
@@ -193,7 +202,7 @@
 
     <section class="container section-split" ngbScrollSpyFragment="6">
       <h3 class="section-title text-center">
-        <b>{{ homepageData?.homepage?.productSectionTitle }}</b>
+        <span>{{ homepageData?.homepage?.productSectionTitle }}</span>
       </h3>
       <h3 class="section-header text-white text-center">
         {{ homepageData?.homepage?.productSectionSubTitle }}
@@ -210,7 +219,7 @@
       <div class="row">
         <div class="col-lg-5 col-12 left">
           <h3 class="section-title">
-            <b>{{ homepageData?.contacts?.title }}</b>
+            <span>{{ homepageData?.contacts?.title }}</span>
           </h3>
           <h2 class="section-header text-white">
             {{ homepageData?.contacts?.subTitle }}
