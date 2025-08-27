@@ -54,6 +54,7 @@ export class LanguageService {
       reqMessage2: '*Keçərli e-poçt daxil edin.',
       contactUs: 'Əlaqə',
       requestSent: 'Sorğunuz göndərildi!',
+      seeAll: 'Hamısına bax',
       contactUsData: {
         apply: 'Müraciət edin',
         contactUs: 'Əlaqə',
@@ -88,6 +89,7 @@ export class LanguageService {
       reqMessage2: '*Please enter a valid email.',
       contactUs: 'Contact us',
       requestSent: '{{"requestSent"|translate}}',
+      seeAll: 'See all',
       contactUsData: {
         apply: 'Submit a request',
         contactUs: 'Contact us',
@@ -122,6 +124,7 @@ export class LanguageService {
       reqMessage2: '*Введите действительный адрес электронной почты.',
       contactUs: 'Свяжитесь с нами',
       requestSent: 'Запрос отправлен!',
+      seeAll: 'Смотреть все',
       contactUsData: {
         apply: 'Оставить заявку',
         contactUs: 'Свяжитесь с нами',

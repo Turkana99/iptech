@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductService } from '../../../../core/services/product.service';
 import { LanguageService } from '../../../../core/services/language.service';
-import { Observable, tap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
+import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule, TranslatePipe],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
@@ -28,17 +29,21 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data$ = this.productService.getBySlug(this.slug).pipe(
-      tap((data: any) => {
-        this.breadcrumbService.setBreadcrumb([
-          {
-            path: AppRoutes.PRODUCTS,
-          },
-          {
-            path: AppRoutes.PRODUCTS,
-            name: data?.title,
-          },
-        ]);
+    this.data$ = this.route.paramMap.pipe(
+      switchMap((data: any) => {
+        return this.productService.getBySlug(data.params['id']).pipe(
+          tap((data: any) => {
+            this.breadcrumbService.setBreadcrumb([
+              {
+                path: AppRoutes.PRODUCTS,
+              },
+              {
+                path: AppRoutes.PRODUCTS,
+                name: data?.title,
+              },
+            ]);
+          })
+        );
       })
     );
   }

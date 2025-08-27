@@ -14,8 +14,20 @@
         </div>
       </div>
       <div class="col-5 d-flex flex-column" style="gap: 30px">
-        <div class="entity" *ngFor="let service of data?.otherServices">
+        <div
+          class="entity"
+          *ngFor="let service of data?.otherServices"
+          [routerLink]="['../', service.slug]"
+        >
           <span> {{ service.title }} </span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div
+          class="entity"
+          *ngIf="data?.otherServices.length"
+          [routerLink]="['../']"
+        >
+          <span> {{ "seeAll" | translate }} </span>
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </div>
