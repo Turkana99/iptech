@@ -9,7 +9,14 @@ import {
 } from '@angular/forms';
 import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
 import { AppRoutes } from '../../../home.routes';
-import { BehaviorSubject, Observable, switchMap, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  map,
+  Observable,
+  switchMap,
+  tap,
+} from 'rxjs';
 import {
   defaultPaginatorOptions,
   IPaginatorOptions,
@@ -19,6 +26,7 @@ import { MaterialModule } from '../../../../core/material.module';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 import { ContactService } from '../../../../core/services/contact.service';
+import { HomepageService } from '../../../../core/services/homepage.service';
 
 @Component({
   selector: 'app-list',
@@ -44,7 +52,8 @@ export class ListComponent {
     private fb: FormBuilder,
     private breadcrumbService: BreadcrumbService,
     private dataService: ServiceService,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private homepageService: HomepageService
   ) {
     this.breadcrumbService.setBreadcrumb([
       {
@@ -55,17 +64,23 @@ export class ListComponent {
 
   ngOnInit() {
     this.initForm();
-    this.data$ = this.page$
-      .pipe(
+    this.data$ = combineLatest([
+      this.page$.pipe(
         switchMap((page) => {
-          return this.dataService.getAllData(page);
+          return this.dataService.getList(page);
         })
-      )
-      .pipe(
-        tap((data) => {
-          console.log('data', data);
-        })
-      );
+      ),
+      this.dataService.getContactData(),
+      this.dataService.getServicePageData(),
+      this.homepageService.getHomepage(),
+    ]).pipe(
+      map(([services, contact, servicePage, homepage]) => {
+        return { services, contact, servicePage, homepage };
+      }),
+      tap((data) => {
+        console.log('data', data);
+      })
+    );
   }
 
   getImageUrl(url: string) {

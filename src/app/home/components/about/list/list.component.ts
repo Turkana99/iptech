@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
 import { AppRoutes } from '../../../home.routes';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LanguageService } from '../../../../core/services/language.service';
 import { AboutService } from '../../../../core/services/about.service';
 
@@ -15,7 +15,7 @@ import { AboutService } from '../../../../core/services/about.service';
 })
 export class ListComponent implements OnInit {
   // data$!: Observable<any>;
-  data: any;
+  data$!: Observable<any>;
   constructor(
     private breadcrumbService: BreadcrumbService,
     private languageService: LanguageService,
@@ -32,12 +32,13 @@ export class ListComponent implements OnInit {
   rightQualities: any[] = [];
 
   ngOnInit(): void {
-    this.dataService.getAllData().subscribe((res: any) => {
-      this.data = res; // about məlumatı üçün
-      const qualities = res?.qualities as any[];
-      this.leftQualities = qualities.slice(0, 2);
-      this.rightQualities = qualities.slice(2, 4);
-    });
+    this.data$ = this.dataService.getAllData().pipe(
+      tap((res: any) => {
+        const qualities = res?.qualities as any[];
+        this.leftQualities = qualities.slice(0, 2);
+        this.rightQualities = qualities.slice(2, 4);
+      })
+    );
   }
 
   getLanguage() {

@@ -11,6 +11,7 @@ import { BreadcrumbService } from '../../../../core/services/breadcrumb.service'
 import { AppRoutes } from '../../../home.routes';
 import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 import { ContactService } from '../../../../core/services/contact.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -22,6 +23,7 @@ import { ContactService } from '../../../../core/services/contact.service';
 export class ListComponent {
   appealForm!: FormGroup;
   requestSent = false;
+  data$!: Observable<any>;
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +39,7 @@ export class ListComponent {
 
   ngOnInit() {
     this.initForm();
+    this.data$ = this.contactService.getContactData();
   }
 
   getImageUrl(url: string) {

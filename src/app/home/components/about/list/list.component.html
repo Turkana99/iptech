@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="data$ | async as data">
   <!-- About Section -->
   <section class="container section-split about-us">
     <div class="section-content d-flex">
@@ -52,7 +52,7 @@
           <button
             class="button-transparent-gradient-border be-vietnam-pro-thin"
           >
-            <span>Read more</span>
+            <span>{{ data?.homepage?.btnAboutDetailText }}</span>
           </button>
         </div>
       </div>
@@ -66,8 +66,8 @@
     <div class="container">
       <div class="row" *ngIf="data">
         <div class="stat-item col-4" *ngFor="let item of data?.statistics">
-          <h2>{{item.valueText}}</h2>
-          <p>{{item.label}}</p>
+          <h2>{{ item.valueText }}</h2>
+          <p>{{ item.label }}</p>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
       <b>{{ data?.about?.qualitySectionTitle }}</b>
     </h3>
     <h3 class="section-header text-white text-center mb-5">
-      {{data?.about?.qualitySectionDescription}}
+      {{ data?.about?.qualitySectionDescription }}
     </h3>
 
     <div class="w-100 row" *ngIf="data">

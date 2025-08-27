@@ -21,13 +21,23 @@ export class AboutService {
     return this.http.get(environment.Statistics.getByClient);
   }
 
+  getHomepage() {
+    return this.http.get(environment.HomePages.getByClient);
+  }
+
   getAllData() {
-    return forkJoin([this.get(), this.getQualities(), this.getStatistics()]).pipe(
-      map(([about, qualities,statistics]) => {
+    return forkJoin([
+      this.get(),
+      this.getQualities(),
+      this.getStatistics(),
+      this.getHomepage(),
+    ]).pipe(
+      map(([about, qualities, statistics, homepage]) => {
         return {
           about,
           qualities,
-          statistics
+          statistics,
+          homepage,
         };
       })
     );

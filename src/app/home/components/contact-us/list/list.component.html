@@ -1,12 +1,17 @@
-<section class="get-in-touch-with-us container mt-5" ngbScrollSpyFragment="7">
+<section
+  class="get-in-touch-with-us section-split container"
+  *ngIf="data$ | async as data"
+>
   <div class="row">
     <div class="col-lg-5 col-12 left">
-      <h3 class="section-title"><b>Contact us</b></h3>
-      <h2 class="section-header text-white">Get in Touch with Us</h2>
+      <h3 class="section-title">
+        <b>{{ data?.title }}</b>
+      </h3>
+      <h2 class="section-header text-white">
+        {{ data?.subTitle }}
+      </h2>
       <p class="section-description text-white text-lg-start">
-        Whether you have a question, need a custom tech solution, or want to
-        start a project — our team is ready to help. Reach out and let’s build
-        something great together.
+        {{ data?.shortDescription }}
       </p>
       <div class="info-container">
         <div class="row gy-4 pt-4">
@@ -19,8 +24,10 @@
                 <i class="fa-solid fa-location-dot"></i>
               </div>
               <div>
-                <h3 class="m-0 text-break">Location:</h3>
-                <p class="m-0 text-break">Baku city, A 101</p>
+                <h3 class="m-0 text-break">{{ data?.lblAddressText }}:</h3>
+                <p class="m-0 text-break">
+                  {{ data?.address }}
+                </p>
               </div>
             </div>
           </div>
@@ -33,8 +40,10 @@
                 <i class="fa-solid fa-clock"></i>
               </div>
               <div>
-                <h3 class="m-0 text-break">Opening hours:</h3>
-                <p class="m-0 text-break">9AM - 8PM</p>
+                <h3 class="m-0 text-break">{{ data?.lblOpeningHoursText }}:</h3>
+                <p class="m-0 text-break">
+                  {{ data?.openingHours }}
+                </p>
               </div>
             </div>
           </div>
@@ -47,8 +56,10 @@
                 <i class="fa-solid fa-phone"></i>
               </div>
               <div>
-                <h3 class="m-0 text-break">Contact:</h3>
-                <p class="m-0 text-break">+994 111 11 11</p>
+                <h3 class="m-0 text-break">{{ data?.lblContactText }}:</h3>
+                <p class="m-0 text-break">
+                  {{ data?.contactNumber }}
+                </p>
               </div>
             </div>
           </div>
@@ -61,8 +72,10 @@
                 <i class="fa-solid fa-envelope"></i>
               </div>
               <div>
-                <h3 class="m-0 text-break">Email:</h3>
-                <p class="m-0 text-break">test&#64;iptech.com</p>
+                <h3 class="m-0 text-break">{{ data?.lblEmailText }}:</h3>
+                <p class="m-0 text-break">
+                  {{ data?.email }}
+                </p>
               </div>
             </div>
           </div>
@@ -79,7 +92,8 @@
         <form class="col-12 row" [formGroup]="appealForm" *ngIf="!requestSent">
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
             <label class="form-label"
-              >Name, surname <span class="required-mark">*</span></label
+              >{{ "contactUsData.nameAndSurname" | translate }}
+              <span class="required-mark">*</span></label
             >
             <input type="email" class="form-control" formControlName="name" />
             <!--Required message-->
@@ -95,7 +109,8 @@
           </div>
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
             <label class="form-label"
-              >Email <span class="required-mark">*</span></label
+              >{{ "contactUsData.email" | translate }}
+              <span class="required-mark">*</span></label
             >
             <input type="email" class="form-control" formControlName="email" />
             <!--Required message-->
@@ -117,7 +132,8 @@
           </div>
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
             <label class="form-label"
-              >Phone <span class="required-mark">*</span></label
+              >{{ "contactUsData.contactNumber" | translate }}
+              <span class="required-mark">*</span></label
             >
             <input
               type="email"
@@ -137,7 +153,8 @@
           </div>
           <div class="col-md-6 col-12 mb-3 d-flex flex-column">
             <label class="form-label"
-              >Subject <span class="required-mark">*</span></label
+              >{{ "contactUsData.subject" | translate }}
+              <span class="required-mark">*</span></label
             >
             <input type="text" class="form-control" formControlName="subject" />
 
@@ -153,7 +170,8 @@
           </div>
           <div class="col-12">
             <label class="form-label"
-              >Message <span class="required-mark">*</span></label
+              >{{ "contactUsData.message" | translate }}
+              <span class="required-mark">*</span></label
             >
             <textarea
               class="form-control"
@@ -177,7 +195,7 @@
               type="button"
               (click)="submitAppeal()"
             >
-              <span>Send</span>
+              <span>{{ "contactUsData.send" | translate }} </span>
             </button>
           </div>
         </form>

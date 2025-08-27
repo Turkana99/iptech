@@ -22,23 +22,7 @@ export class ServiceService {
     return this.http.get(environment.Services.getBySlug(slug));
   }
 
-  getContactData(){
+  getContactData() {
     return this.http.get(environment.Contacts.getByClient);
-  }
-
-  getAllData(paginatorOptions: IPaginatorOptions) {
-    return forkJoin([
-      this.getList(paginatorOptions),
-      this.getServicePageData(),
-      this.getContactData()
-    ]).pipe(
-      map(([services, servicePage, contact]) => {
-        return {
-          services,
-          servicePage,
-          contact
-        };
-      })
-    );
   }
 }

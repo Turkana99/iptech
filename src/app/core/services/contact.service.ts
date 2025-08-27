@@ -12,4 +12,8 @@ export class ContactService {
   sendRequest(req: any) {
     return this.http.post(environment.Appeals.create, req);
   }
+
+  getContactData() {
+    return this.http.get(environment.Contacts.getByClient);
+  }
 }

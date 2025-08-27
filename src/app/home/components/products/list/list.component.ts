@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   BehaviorSubject,
   combineLatest,
+  map,
   Observable,
   switchMap,
   tap,
@@ -17,6 +18,7 @@ import {
 import { ProductService } from '../../../../core/services/product.service';
 import { LanguageService } from '../../../../core/services/language.service';
 import { MaterialModule } from '../../../../core/material.module';
+import { HomepageService } from '../../../../core/services/homepage.service';
 
 @Component({
   selector: 'app-list',
@@ -34,7 +36,8 @@ export class ListComponent implements OnInit {
     private breadcrumbService: BreadcrumbService,
     private dataService: ProductService,
     private languageService: LanguageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private homepageService: HomepageService
   ) {
     this.breadcrumbService.setBreadcrumb([
       {
@@ -43,9 +46,21 @@ export class ListComponent implements OnInit {
     ]);
   }
   ngOnInit(): void {
-    this.data$ = this.page$.pipe(
-      switchMap((page) => {
-        return this.dataService.getAllData(page);
+    this.data$ = combineLatest([
+      this.page$.pipe(
+        switchMap((page) => {
+          return this.dataService.getList(page);
+        })
+      ),
+      this.dataService.getProductPageData(),
+      this.homepageService.getHomepage(),
+    ]).pipe(
+      map(([products, productPage, homepage]) => {
+        return {
+          products,
+          productPage,
+          homepage,
+        };
       })
     );
   }
