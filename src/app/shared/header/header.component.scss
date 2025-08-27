@@ -2,7 +2,7 @@ header {
   padding: 0 35px;
   border-bottom: 1px solid rgb(255 255 255 / 24%);
   color: white;
-  background: linear-gradient(101deg, #025088 14%, #000000c2 42%);
+  backdrop-filter: blur(5px);
   .logo-wrapper {
     width: 65px;
     height: 65px;
