@@ -47,29 +47,31 @@
       </li>
     </ul>
 
-    <div class="d-none d-lg-flex" *ngIf="data$ | async">
-      <div class="d-flex align-items-center">
-        <label for="langBtn">{{ currentLang }}</label>
-        <button
-          id="langBtn"
-          style="position: relative; right: 12px; color: white"
-          mat-icon-button
-          [matMenuTriggerFor]="menu"
-          aria-label="Example icon-button with a menu"
-          [disableRipple]="true"
-        >
-          <mat-icon>arrow_drop_down</mat-icon>
-        </button>
-      </div>
-      <mat-menu #menu="matMenu" class="language-menu">
-        <button
-          mat-menu-item
-          *ngFor="let item of langs"
-          (click)="changeLanguage(item)"
-        >
-          <span styl>{{ item.name }}</span>
-        </button>
-      </mat-menu>
+    <div class="d-flex" style="width: 100px">
+      <ng-container *ngIf="data$ | async">
+        <div class="d-flex align-items-center">
+          <label for="langBtn">{{ currentLang }}</label>
+          <button
+            id="langBtn"
+            style="position: relative; right: 12px; color: white"
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+            [disableRipple]="true"
+          >
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+        </div>
+        <mat-menu #menu="matMenu" class="language-menu">
+          <button
+            mat-menu-item
+            *ngFor="let item of langs"
+            (click)="changeLanguage(item)"
+          >
+            <span styl>{{ item.name }}</span>
+          </button>
+        </mat-menu>
+      </ng-container>
     </div>
   </nav>
 </header>
