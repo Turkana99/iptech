@@ -1,0 +1,16 @@
+$bp-desktop: 992px;
+$bp-mobile: 768px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == desktop {
+    @media (max-width: $bp-desktop) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media (max-width: $bp-mobile) {
+      @content;
+    }
+  }
+}

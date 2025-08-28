@@ -120,7 +120,9 @@
               "node_modules/quill/dist/quill.snow.css",
               "node_modules/ngx-spinner/animations/ball-clip-rotate-multiple.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }

@@ -3,7 +3,7 @@
     <img src="assets/images/IptechLogo.svg" alt="" />
   </div>
 
-  <nav class="d-flex align-items-center">
+  <nav class="d-none d-lg-flex align-items-center">
     <ul class="list-unstyled d-flex m-0 me-5">
       <li
         class="nav-link"
@@ -74,8 +74,84 @@
       </ng-container>
     </div>
   </nav>
+
+  <button
+    matRipple
+    class="d-flex d-lg-none close-btn position-relative p-3"
+    (click)="isOpen = !isOpen"
+  >
+    <img *ngIf="!isOpen" src="assets/images/menu-hamburger-btn.svg" alt="" />
+  </button>
+
+  <div class="collapsable-header d-lg-none" [ngClass]="{ open: isOpen }">
+    <div class="container">
+      <div
+        class="hdr-content-wrapper d-flex justify-content-between align-items-center"
+      >
+        <div
+          class="logo-wrapper d-flex align-items-center justify-content-center cursor-pointer"
+          [routerLink]="['home']"
+        >
+          <img src="assets/images/IptechLogo.svg" alt="" />
+        </div>
+        <button
+          matRipple
+          class="d-flex d-lg-none close-btn position-relative p-3"
+          (click)="isOpen = !isOpen"
+        >
+          <img *ngIf="isOpen" src="assets/images/menu-close-btn.svg" alt="" />
+          <img
+            *ngIf="!isOpen"
+            src="assets/images/menu-hamburger-btn.svg"
+            alt=""
+          />
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <ul class="list-unstyled m-0 mb-5 d-flex flex-column">
+        <li (click)="isOpen = false">
+          <a
+            [routerLink]="['home']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="router-link-active"
+            >{{ "home" | translate }}</a
+          >
+        </li>
+        <li (click)="isOpen = false">
+          <a
+            [routerLink]="['home', 'services']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="router-link-active"
+            >{{ "home" | translate }}</a
+          >
+        </li>
+        <li (click)="isOpen = false">
+          <a
+            [routerLink]="['home', 'products']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="router-link-active"
+            >{{ "home" | translate }}</a
+          >
+        </li>
+      </ul>
+
+      <div class="d-flex lang-btns-wrapper">
+        <button
+          (click)="changeLanguage(item)"
+          *ngFor="let item of langs"
+          [ngClass]="{
+            selected: languageService.getLanguage().culture == item.culture
+          }"
+        >
+          {{ item.displayName }}
+        </button>
+      </div>
+    </div>
+  </div>
 </header>
 
 <!--  -->
 
-<app-breadcrumb></app-breadcrumb>
+<app-breadcrumb class="d-none d-lg-flex"></app-breadcrumb>

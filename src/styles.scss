@@ -2,6 +2,8 @@
 @import url("assets/css/fontawesome.min.css");
 @import url("assets/fonts/be-vietnam-pro.css");
 @import url("assets/fonts/inter.css");
+@import url("assets/css/responsive/_desktop.scss");
+@import url("assets/css/responsive/_mobile.scss");
 
 swiper > .swiper.s-wrapper .swiper-pagination {
   pointer-events: none;
@@ -16,142 +18,6 @@ body {
   );
   background-repeat: no-repeat;
   overflow-x: clip;
-}
-
-// .gradient-button {
-//   --radius: 0.5rem;
-//   padding-inline: 30px;
-//   padding-block: 10px;
-//   border-radius: var(--radius);
-//   border: none;
-//   background-color: rgb(7 61 99);
-//   font-size: 1.2rem;
-//   cursor: pointer;
-//   position: relative;
-//   display: grid;
-//   place-items: center;
-//   transition: background-color 0.2s ease;
-
-//   span {
-//     background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
-//     background-clip: text;
-//     -webkit-text-fill-color: transparent;
-//     font-size: 20px;
-//     font-weight: 600;
-//   }
-
-//   &:before,
-//   &:after {
-//     border-radius: calc(var(--radius) + 0.2rem);
-//     position: absolute;
-//     content: "";
-//     width: calc(100% + 4px);
-//     height: calc(100% + 4px);
-//     background: linear-gradient(99.86deg, #0579ff 18.23%, #fdfdfd 72.74%);
-
-//     z-index: -1;
-//   }
-//   &:after {
-//     z-index: -2;
-//     transition: filter 0.2s ease;
-//   }
-//   &:hover {
-//     background-color: transparent;
-//     &::after {
-//       filter: blur(10px);
-//     }
-//   }
-// }
-
-.gradient-button {
-  --radius: 12px;
-  position: relative;
-  padding: 7px 25px;
-  border-radius: var(--radius);
-  border: 1px solid transparent;
-  background-image: linear-gradient(rgb(7, 61, 99), rgb(7, 61, 99)),
-    linear-gradient(99.86deg, #0579ff 18.23%, #b8d5ff 72.74%);
-  background-origin: padding-box, border-box;
-  background-clip: padding-box, border-box;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-grid;
-  place-items: center;
-  transition: color 0.4s ease, background-color 0.4s ease;
-  font-family: "Arial", sans-serif;
-  text-transform: capitalize;
-  z-index: 0;
-}
-/* Gradient border üçün pseudo element */
-.gradient-button::before {
-  content: "";
-  position: absolute;
-  top: -3px; /* border qalınlığı qədər çıxarırıq */
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border-radius: var(--radius);
-  background: linear-gradient(99.86deg, #0579ff 18.23%, #b8d5ff 72.74%);
-  z-index: 0;
-}
-.gradient-button span {
-  position: relative;
-  z-index: 2;
-  background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: color 0.4s ease;
-}
-
-/* Hover efekt üçün pseudo elementlər */
-.gradient-button::before,
-.gradient-button::after {
-  content: "";
-  position: absolute;
-  width: 50%;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  border-radius: var(--radius);
-  background: linear-gradient(
-    99.86deg,
-    #0074fa 18.23%,
-    #b8d5ff 72.74%
-  ); /* Ağ işıq effekti üçün açıq rəng */
-  z-index: 0;
-  transition: all 0.4s ease-in-out;
-}
-
-.gradient-button::before {
-  top: 0;
-  left: 0;
-}
-
-.gradient-button::after {
-  bottom: 0;
-  right: 0;
-}
-
-.gradient-button:hover::before,
-.gradient-button:hover::after {
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  visibility: visible;
-}
-
-.gradient-button:hover {
-  color: white;
-  background-color: rgb(7 61 99);
-}
-
-.gradient-button:hover span {
-  background: none !important;
-  -webkit-text-fill-color: white !important;
-  color: white !important;
 }
 
 header,
@@ -197,6 +63,97 @@ section {
     font-weight: 300;
     font-size: 18px;
     line-height: 43px;
+  }
+}
+
+.gradient-button {
+  --radius: 12px;
+  position: relative;
+  padding: 7px 25px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background-image: linear-gradient(rgb(7, 61, 99), rgb(7, 61, 99)),
+    linear-gradient(99.86deg, #0579ff 18.23%, #b8d5ff 72.74%);
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+  transition: color 0.4s ease, background-color 0.4s ease;
+  font-family: "Arial", sans-serif;
+  text-transform: capitalize;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -3px; /* border qalınlığı qədər çıxarırıq */
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: var(--radius);
+    background: linear-gradient(99.86deg, #0579ff 18.23%, #b8d5ff 72.74%);
+    z-index: 0;
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: color 0.4s ease;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: var(--radius);
+    background: linear-gradient(
+      99.86deg,
+      #0074fa 18.23%,
+      #b8d5ff 72.74%
+    ); /* Ağ işıq effekti üçün açıq rəng */
+    z-index: 0;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    right: 0;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover {
+    color: white;
+    background-color: rgb(7 61 99);
+  }
+
+  &:hover span {
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+    color: white !important;
   }
 }
 

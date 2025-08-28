@@ -3,6 +3,34 @@ header {
   border-bottom: 1px solid rgb(255 255 255 / 24%);
   color: white;
   backdrop-filter: blur(5px);
+  position: relative;
+
+  @media (max-width: 992px) {
+    & {
+      position: fixed;
+      width: 100vw;
+      top: 0;
+      z-index: 10000;
+    }
+  }
+
+  .close-btn {
+    border: none;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 5px;
+
+    img {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+    }
+  }
+
   .logo-wrapper {
     width: 65px;
     height: 65px;
@@ -51,6 +79,29 @@ header {
 
       &:hover::after {
         width: 100% !important;
+      }
+    }
+  }
+
+  .collapsable-header {
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #dfc15f85;
+    backdrop-filter: blur(13px);
+    position: absolute;
+    top: -200vh;
+    left: 0;
+    transition: top 500ms;
+    .hdr-content-wrapper {
+      filter: blur(13px);
+      transition: filter 1000ms;
+    }
+
+    &.open {
+      top: 0;
+
+      .hdr-content-wrapper {
+        filter: blur(0);
       }
     }
   }

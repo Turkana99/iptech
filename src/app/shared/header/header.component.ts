@@ -26,6 +26,7 @@ export class HeaderComponent {
   routes$!: Observable<string[]>;
   currentLang!: string;
   langs: any[] = [];
+  isOpen = false;
 
   data$ = this.languageService.getAll().pipe(
     tap((response: any) => {
