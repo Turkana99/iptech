@@ -15,11 +15,11 @@ import {
 import { HeaderComponent } from '../../../../shared/header/header.component';
 import { FooterComponent } from '../../../../shared/footer/footer.component';
 import { BreadcrumbService } from '../../../../core/services/breadcrumb.service';
-import { AppRoutes } from '../../../home.routes';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HomepageService } from '../../../../core/services/homepage.service';
 import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 import { ContactService } from '../../../../core/services/contact.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -35,6 +35,7 @@ import { ContactService } from '../../../../core/services/contact.service';
     HeaderComponent,
     FooterComponent,
     TranslatePipe,
+    RouterModule
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',

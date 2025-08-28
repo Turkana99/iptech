@@ -21,6 +21,7 @@
         <source src="assets/globe.webm" type="video/webm" />
       </video>
     </div>
+
     <section class="container section-split" ngbScrollSpyFragment="1">
       <div class="col-8">
         <h3 class="section-header text-white mb-4">
@@ -45,6 +46,7 @@
 
           <div class="col-12 d-flex mt-5">
             <button
+              [routerLink]="['about']"
               class="button-transparent-gradient-border be-vietnam-pro-thin"
             >
               <span>{{ homepageData?.homepage?.btnDetailText }}</span>
@@ -124,6 +126,7 @@
 
           <div class="col-12 mt-5">
             <button
+              [routerLink]="['about']"
               class="button-transparent-gradient-border be-vietnam-pro-thin"
             >
               <span>{{ homepageData?.homepage?.btnAboutDetailText }}</span>
@@ -164,7 +167,10 @@
                 </p>
               </div>
               <div class="w-100 d-flex justify-content-start m-0">
-                <button class="button-transparent-gradient-border">
+                <button
+                  [routerLink]="['service', item?.slug]"
+                  class="button-transparent-gradient-border"
+                >
                   <span>{{
                     homepageData?.homepage?.btnServiceDetailText
                   }}</span>

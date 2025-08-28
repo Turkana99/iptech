@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { AppRoutes } from '../../home/home.routes';
 import { Observable, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../core/material.module';
 import { LanguageService } from '../../core/services/language.service';
-import { Languages } from '../../core/languages';
 import { TranslatePipe } from '../../core/pipes/translate.pipe';
 
 @Component({
