@@ -1,6 +1,4 @@
 .stats {
-  display: flex;
-  justify-content: center;
   position: relative;
   overflow-x: clip;
 
@@ -10,8 +8,12 @@
       font-family: Inter;
       font-weight: 800;
       font-style: Extra Bold;
-      font-size: 90px !important;
+      font-size: 90px;
       line-height: 100%;
+
+      @media screen and (max-width: 992px) {
+        font-size: 28px;
+      }
     }
     p {
       font-family: Inter;
@@ -20,6 +22,10 @@
       font-size: 30px;
       line-height: 100%;
       margin: 0;
+
+      @media screen and (max-width: 992px) {
+        font-size: 12px;
+      }
     }
   }
 
@@ -39,7 +45,7 @@
   color: white;
 
   .item-title {
-    font-family: Be Vietnam Pro;
+    font-family: "Be Vietnam Pro", sans-serif;
     font-weight: 700;
     font-style: Bold;
     font-size: 22px;
@@ -48,7 +54,7 @@
     text-align: center;
   }
   .item-description {
-    font-family: Be Vietnam Pro;
+    font-family: "Be Vietnam Pro", sans-serif;
     font-weight: 400;
     font-style: Regular;
     font-size: 17px;
@@ -74,25 +80,71 @@
   }
 }
 
-.image-container {
-  --border-radius: 50px;
-  background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
-  width: max-content;
-  height: max-content;
-  padding: 4px;
-  border-radius: var(--border-radius);
-  position: var(--position);
-  top: var(--top);
-  right: var(--right);
-
-  & .inner-image-wrapper {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-image: var(--backgroundImgUrl);
-    width: var(--width) !important;
-    height: var(--height) !important;
+.about-us-images {
+  .image-container {
+    --border-radius: 50px;
+    background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
+    width: max-content;
+    height: max-content;
+    padding: 4px;
     border-radius: var(--border-radius);
+
+    &:first-child {
+      .inner-image-wrapper {
+        width: 480px;
+        height: 720px;
+        anchor-name: --first-img;
+
+        @media screen and (max-width: 1200px) {
+          width: 400px;
+          height: 600px;
+        }
+
+        @media screen and (max-width: 992px) {
+          width: 300px;
+          height: 450px;
+        }
+      }
+    }
+
+    &:last-child {
+      position: absolute;
+      position-anchor: --first-img;
+      left: anchor(right);
+      bottom: anchor(bottom);
+      translate: -75% 10%;
+
+      @media screen and (max-width: 1200px) {
+        translate: -85% 10%;
+      }
+
+      @media screen and (max-width: 1400px) {
+        translate: -85% 10%;
+      }
+
+      .inner-image-wrapper {
+        width: 420px;
+        height: 420px;
+
+        @media screen and (max-width: 992px) {
+          width: 240px;
+          height: 240px;
+        }
+
+        @media screen and (max-width: 1200px) {
+          width: 270px;
+          height: 270px;
+        }
+      }
+    }
+
+    & .inner-image-wrapper {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-image: var(--backgroundImgUrl);
+      border-radius: var(--border-radius);
+    }
   }
 }
 
@@ -100,7 +152,7 @@
   --border-radius: 50px;
   background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
   width: 100% !important;
-  height: 100% !important;
+  height: 500px;
   padding: 4px;
   border-radius: var(--border-radius);
   position: var(--position);
