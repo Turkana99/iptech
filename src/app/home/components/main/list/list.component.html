@@ -23,28 +23,23 @@
     </div>
 
     <section class="container section-split" ngbScrollSpyFragment="1">
-      <div class="col-8">
-        <h3 class="section-header text-white mb-4">
+      <div class="col-12 col-lg-8 pt-2">
+        <h3 class="section-header text-white mb-2 mb-lg-4">
           {{ homepageData?.homepage?.title }}
         </h3>
-        <h5 class="title-description text-white mb-4">
+        <h5 class="section-description text-white mb-2 mb-lg-4">
           {{ homepageData?.homepage?.subTitle }}
         </h5>
-        <div class="col-8 row pt-2">
-          <div class="col-4 d-flex flex-column stats">
-            <h4>{{ homepageData?.homepage?.productCount }}</h4>
-            <p class="m-0">{{ homepageData?.homepage?.productCountTitle }}</p>
-          </div>
-          <div class="col-4 d-flex flex-column stats">
-            <h4>{{ homepageData?.homepage?.serviceCount }}</h4>
-            <p class="m-0">{{ homepageData?.homepage?.serviceCountTitle }}</p>
-          </div>
-          <div class="col-4 d-flex flex-column stats">
-            <h4>{{ homepageData?.homepage?.partnerCount }}</h4>
-            <p class="m-0">{{ homepageData?.homepage?.partnerCountTitle }}</p>
+        <div class="col-12 col-lg-8 row pt-2">
+          <div
+            class="col-lg-4 col-6 d-flex flex-column stats align-items-center align-items-lg-start"
+            *ngFor="let item of homepageData?.statistics"
+          >
+            <h4>{{ item?.valueText }}</h4>
+            <p class="m-0">{{ item?.label }}</p>
           </div>
 
-          <div class="col-12 d-flex mt-5">
+          <div class="col-12 d-flex mt-lg-5 mt-3">
             <button
               [routerLink]="['about']"
               class="button-transparent-gradient-border be-vietnam-pro-thin"
@@ -79,42 +74,33 @@
     </section>
 
     <section class="container section-split about-us" ngbScrollSpyFragment="3">
-      <div class="section-content d-flex">
-        <div class="col-6">
-          <div class="about-us-images d-flex">
-            <div class="image-container">
-              <div
-                class="inner-image-wrapper"
-                [ngStyle]="{
-                  '--backgroundImgUrl': getImageUrl(
-                    homepageData?.homepage?.aboutSectionOtherImagePath
-                  ),
-                  '--width': '480px',
-                  '--height': '720px'
-                }"
-              ></div>
-            </div>
+      <div class="row">
+        <div class="col-lg-6 col-12 about-us-images">
+          <div class="image-container">
             <div
-              class="image-container"
+              class="inner-image-wrapper"
               [ngStyle]="{
-                '--position': 'relative',
-                '--top': '360px',
-                '--right': '300px'
+                '--backgroundImgUrl': getImageUrl(
+                  homepageData?.homepage?.aboutSectionOtherImagePath
+                ),
               }"
-            >
-              <div
-                class="inner-image-wrapper"
-                [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl(homepageData?.homepage?.aboutSectionMainImagePath),
-              '--width': '420px',
-              '--height': '420px',
-            }"
-              ></div>
-            </div>
+            ></div>
+          </div>
+          <div class="image-container">
+            <div
+              class="inner-image-wrapper"
+              [ngStyle]="{
+                '--backgroundImgUrl': getImageUrl(
+                  homepageData?.homepage?.aboutSectionMainImagePath
+                )
+              }"
+            ></div>
           </div>
         </div>
-        <div class="col-6">
-          <h3 class="section-title">
+        <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+          <h3
+            class="section-title d-flex justify-content-center justify-content-lg-start"
+          >
             <span>{{ homepageData?.homepage?.aboutSectionTitle }}</span>
           </h3>
           <h3 class="section-header text-white">
@@ -146,7 +132,7 @@
       <div class="row row-gap-5 mt-5">
         <!-- loop this -->
         <div
-          class="col-6"
+          class="col-lg-6 col-12"
           *ngFor="let item of homepageData?.servicesList; let i = index"
         >
           <div class="service-card">
@@ -162,7 +148,7 @@
             <div class="card-right">
               <div>
                 <h4 class="card-title">{{ item?.title }}</h4>
-                <p class="card-description m-0 pt-3">
+                <p class="card-description m-0 mb-2 pt-3">
                   {{ item?.shortDescription }}
                 </p>
               </div>

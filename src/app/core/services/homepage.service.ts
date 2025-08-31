@@ -20,6 +20,7 @@ export class HomepageService {
       this.getContacts(),
       this.getServicesList(),
       this.getProductsList(),
+      this.getStatistics(),
     ]).pipe(
       map(
         ([
@@ -32,6 +33,7 @@ export class HomepageService {
           contacts,
           servicesList,
           prodsuctsList,
+          statistics,
         ]) => {
           return {
             homepage,
@@ -43,6 +45,7 @@ export class HomepageService {
             contacts,
             servicesList,
             prodsuctsList,
+            statistics,
           };
         }
       )
@@ -83,5 +86,9 @@ export class HomepageService {
 
   getProductsList() {
     return this.http.get(environment.Products.listByHomePage);
+  }
+
+  getStatistics() {
+    return this.http.get(environment.Statistics.getByClient);
   }
 }

@@ -30,12 +30,20 @@ footer {
 section {
   &.section-split {
     margin-top: 150px;
+
+    @media screen and (max-width: 992px) {
+      margin-top: 50px;
+    }
   }
 
   .section-title {
     font-family: "Be Vietnam Pro", sans-serif;
     font-weight: 700;
     font-size: 18px;
+
+    @media screen and (max-width: 992px) {
+      font-size: 12px;
+    }
 
     span {
       background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
@@ -50,6 +58,10 @@ section {
     font-weight: 700;
     font-style: bold;
     font-size: 64px;
+
+    @media screen and (max-width: 992px) {
+      font-size: 26px;
+    }
   }
 
   .section-description {
@@ -57,12 +69,11 @@ section {
     font-weight: 300;
     font-size: 16px;
     line-height: 43px;
-  }
-  .title-description {
-    font-family: "Be Vietnam Pro", sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 43px;
+
+    @media screen and (max-width: 992px) {
+      font-size: 12px;
+      line-height: 20px;
+    }
   }
 }
 
@@ -167,6 +178,11 @@ section {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
+  @media screen and (max-width: 992px) {
+    padding: 24px;
+    gap: 20px;
+  }
+
   .card-left {
     width: max-content;
     height: 100%;
@@ -180,6 +196,11 @@ section {
       background-repeat: no-repeat;
       background-position: center;
       background-image: var(--backgroundImgUrl);
+
+      @media screen and (max-width: 992px) {
+        width: 40px;
+        height: 40px;
+      }
     }
     .card-number {
       font-family: "Be Vietnam Pro", sans-serif;
@@ -187,6 +208,10 @@ section {
       font-size: 66px;
       transform: rotate(-90deg);
       color: rgba(255, 255, 255, 0.32);
+
+      @media screen and (max-width: 992px) {
+        font-size: 40px;
+      }
     }
   }
   .card-right {
@@ -198,17 +223,30 @@ section {
       font-weight: 700;
       font-size: 40px;
       color: white;
+
+      @media screen and (max-width: 992px) {
+        font-size: 24px;
+      }
     }
     .card-description {
       font-family: "Be Vietnam Pro", sans-serif;
       font-weight: 200;
       font-size: 16px;
-      font-style: regular;
-      line-height: 30px;
       color: white;
-      margin-top: 15px;
       height: 160px;
       overflow: hidden;
+      line-height: 24px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      line-clamp: 6;
+
+      @media screen and (max-width: 992px) {
+        height: 95px;
+        font-size: 11px;
+        line-height: 16px;
+        -webkit-line-clamp: 5;
+      }
     }
   }
 }
@@ -543,6 +581,10 @@ section {
   background-color: transparent;
   border: none;
   transition: all 0.2s;
+
+  @media screen and (max-width: 992px) {
+    font-size: 12px;
+  }
 
   span {
     background: linear-gradient(99.86deg, #0074fa 18.23%, #b8d5ff 72.74%);
