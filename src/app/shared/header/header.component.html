@@ -1,119 +1,99 @@
-<header class="w-100 d-flex justify-content-between align-items-center">
-  <div class="logo-wrapper" [routerLink]="[routes.HOME]">
-    <img src="assets/images/IptechLogo.svg" alt="" />
+<header>
+  <div
+    class="hdr-content-wrapper w-100 d-flex justify-content-between align-items-center"
+  >
+    <div class="logo-wrapper" [routerLink]="[routes.HOME]">
+      <img src="assets/images/IptechLogo.svg" alt="" />
+    </div>
+
+    <nav class="d-none d-lg-flex align-items-center">
+      <ul class="list-unstyled d-flex m-0 me-5">
+        <li
+          class="nav-link"
+          [routerLink]="['/' + routes.HOME]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <p>{{ "home" | translate }}</p>
+        </li>
+        <li
+          class="nav-link"
+          [routerLink]="['/' + routes.HOME, routes.ABOUT_US]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <p>{{ "about" | translate }}</p>
+        </li>
+        <li
+          class="nav-link"
+          [routerLink]="['/' + routes.HOME, routes.SERVICES]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <p>{{ "service" | translate }}</p>
+        </li>
+        <li
+          class="nav-link"
+          [routerLink]="['/' + routes.HOME, routes.PRODUCTS]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <p>{{ "product" | translate }}</p>
+        </li>
+        <li
+          class="nav-link"
+          [routerLink]="['/' + routes.HOME, routes.CONTACT_US]"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <p>{{ "contact" | translate }}</p>
+        </li>
+      </ul>
+
+      <div class="d-flex" style="width: 100px">
+        <ng-container *ngIf="data$ | async">
+          <div class="d-flex align-items-center">
+            <label for="langBtn">{{ currentLang }}</label>
+            <button
+              id="langBtn"
+              style="position: relative; right: 12px; color: white"
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+              [disableRipple]="true"
+            >
+              <mat-icon>arrow_drop_down</mat-icon>
+            </button>
+          </div>
+          <mat-menu #menu="matMenu" class="language-menu">
+            <button
+              mat-menu-item
+              *ngFor="let item of langs"
+              (click)="changeLanguage(item)"
+            >
+              <span styl>{{ item.name }}</span>
+            </button>
+          </mat-menu>
+        </ng-container>
+      </div>
+    </nav>
+
+    <button
+      matRipple
+      class="d-flex d-lg-none close-btn position-relative p-3"
+      (click)="isOpen = !isOpen"
+    >
+      <img *ngIf="isOpen" src="assets/images/menu-close-btn.svg" alt="" />
+      <img *ngIf="!isOpen" src="assets/images/menu-hamburger-btn.svg" alt="" />
+    </button>
   </div>
 
-  <nav class="d-none d-lg-flex align-items-center">
-    <ul class="list-unstyled d-flex m-0 me-5">
-      <li
-        class="nav-link"
-        [routerLink]="['/' + routes.HOME]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <p>{{ "home" | translate }}</p>
-      </li>
-      <li
-        class="nav-link"
-        [routerLink]="['/' + routes.HOME, routes.ABOUT_US]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <p>{{ "about" | translate }}</p>
-      </li>
-      <li
-        class="nav-link"
-        [routerLink]="['/' + routes.HOME, routes.SERVICES]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <p>{{ "service" | translate }}</p>
-      </li>
-      <li
-        class="nav-link"
-        [routerLink]="['/' + routes.HOME, routes.PRODUCTS]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <p>{{ "product" | translate }}</p>
-      </li>
-      <li
-        class="nav-link"
-        [routerLink]="['/' + routes.HOME, routes.CONTACT_US]"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <p>{{ "contact" | translate }}</p>
-      </li>
-    </ul>
-
-    <div class="d-flex" style="width: 100px">
-      <ng-container *ngIf="data$ | async">
-        <div class="d-flex align-items-center">
-          <label for="langBtn">{{ currentLang }}</label>
-          <button
-            id="langBtn"
-            style="position: relative; right: 12px; color: white"
-            mat-icon-button
-            [matMenuTriggerFor]="menu"
-            aria-label="Example icon-button with a menu"
-            [disableRipple]="true"
-          >
-            <mat-icon>arrow_drop_down</mat-icon>
-          </button>
-        </div>
-        <mat-menu #menu="matMenu" class="language-menu">
-          <button
-            mat-menu-item
-            *ngFor="let item of langs"
-            (click)="changeLanguage(item)"
-          >
-            <span styl>{{ item.name }}</span>
-          </button>
-        </mat-menu>
-      </ng-container>
-    </div>
-  </nav>
-
-  <button
-    matRipple
-    class="d-flex d-lg-none close-btn position-relative p-3"
-    (click)="isOpen = !isOpen"
-  >
-    <img *ngIf="!isOpen" src="assets/images/menu-hamburger-btn.svg" alt="" />
-  </button>
-
   <div class="collapsable-header d-lg-none" [ngClass]="{ open: isOpen }">
-    <div class="container">
-      <div
-        class="hdr-content-wrapper d-flex justify-content-between align-items-center"
-      >
-        <div
-          class="logo-wrapper d-flex align-items-center justify-content-center cursor-pointer"
-          [routerLink]="['home']"
-        >
-          <img src="assets/images/IptechLogo.svg" alt="" />
-        </div>
-        <button
-          matRipple
-          class="d-flex d-lg-none close-btn position-relative p-3"
-          (click)="isOpen = !isOpen"
-        >
-          <img *ngIf="isOpen" src="assets/images/menu-close-btn.svg" alt="" />
-          <img
-            *ngIf="!isOpen"
-            src="assets/images/menu-hamburger-btn.svg"
-            alt=""
-          />
-        </button>
-      </div>
-    </div>
-
     <div class="container">
       <ul class="list-unstyled m-0 mb-5 d-flex flex-column">
         <li (click)="isOpen = false">
           <a
-            [routerLink]="['home']"
+            [routerLink]="['/' + routes.HOME]"
             [routerLinkActiveOptions]="{ exact: true }"
             routerLinkActive="router-link-active"
             >{{ "home" | translate }}</a
@@ -121,18 +101,34 @@
         </li>
         <li (click)="isOpen = false">
           <a
-            [routerLink]="['home', 'services']"
+            [routerLink]="['/' + routes.HOME, routes.ABOUT_US]"
             [routerLinkActiveOptions]="{ exact: true }"
             routerLinkActive="router-link-active"
-            >{{ "home" | translate }}</a
+            >{{ "about" | translate }}</a
           >
         </li>
         <li (click)="isOpen = false">
           <a
-            [routerLink]="['home', 'products']"
+            [routerLink]="['/' + routes.HOME, routes.SERVICES]"
             [routerLinkActiveOptions]="{ exact: true }"
             routerLinkActive="router-link-active"
-            >{{ "home" | translate }}</a
+            >{{ "service" | translate }}</a
+          >
+        </li>
+        <li (click)="isOpen = false">
+          <a
+            [routerLink]="['/' + routes.HOME, routes.PRODUCTS]"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="router-link-active"
+            >{{ "product" | translate }}</a
+          >
+        </li>
+        <li (click)="isOpen = false">
+          <a
+            [routerLink]="['/' + routes.HOME, routes.CONTACT_US]"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="router-link-active"
+            >{{ "contact" | translate }}</a
           >
         </li>
       </ul>
@@ -142,10 +138,10 @@
           (click)="changeLanguage(item)"
           *ngFor="let item of langs"
           [ngClass]="{
-            selected: languageService.getLanguage().culture == item.culture
+            selected: languageService.getLanguage().code == item.code
           }"
         >
-          {{ item.displayName }}
+          {{ item.name }}
         </button>
       </div>
     </div>
@@ -154,4 +150,4 @@
 
 <!--  -->
 
-<app-breadcrumb class="d-none d-lg-flex"></app-breadcrumb>
+<app-breadcrumb></app-breadcrumb>
