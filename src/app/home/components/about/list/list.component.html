@@ -3,25 +3,27 @@
   <section class="container section-split about-us">
     <div class="row">
       <div class="col-lg-6 col-12 about-us-images">
-        <div class="image-container">
-          <div
-            class="inner-image-wrapper"
-            [ngStyle]="{
+        <div class="about-us-image-container">
+          <div class="image-container">
+            <div
+              class="inner-image-wrapper"
+              [ngStyle]="{
                 '--backgroundImgUrl': getImageUrl(
                   data?.about?.aboutPageMainImagePath
                 ),
               }"
-          ></div>
-        </div>
-        <div class="image-container">
-          <div
-            class="inner-image-wrapper"
-            [ngStyle]="{
-              '--backgroundImgUrl': getImageUrl(
-                data?.about?.aboutPageOtherImagePath
-              )
-            }"
-          ></div>
+            ></div>
+          </div>
+          <div class="image-container">
+            <div
+              class="inner-image-wrapper"
+              [ngStyle]="{
+                '--backgroundImgUrl': getImageUrl(
+                  data?.about?.aboutPageOtherImagePath
+                )
+              }"
+            ></div>
+          </div>
         </div>
       </div>
 

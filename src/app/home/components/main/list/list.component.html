@@ -73,31 +73,33 @@
       </div>
     </section>
 
-    <section class="container section-split about-us" ngbScrollSpyFragment="3">
+    <section class="container section-split about-us">
       <div class="row">
         <div class="col-lg-6 col-12 about-us-images">
-          <div class="image-container">
-            <div
-              class="inner-image-wrapper"
-              [ngStyle]="{
+          <div class="about-us-image-container">
+            <div class="image-container">
+              <div
+                class="inner-image-wrapper"
+                [ngStyle]="{
                 '--backgroundImgUrl': getImageUrl(
                   homepageData?.homepage?.aboutSectionOtherImagePath
                 ),
               }"
-            ></div>
-          </div>
-          <div class="image-container">
-            <div
-              class="inner-image-wrapper"
-              [ngStyle]="{
-                '--backgroundImgUrl': getImageUrl(
-                  homepageData?.homepage?.aboutSectionMainImagePath
-                )
-              }"
-            ></div>
+              ></div>
+            </div>
+            <div class="image-container">
+              <div
+                class="inner-image-wrapper"
+                [ngStyle]="{
+                  '--backgroundImgUrl': getImageUrl(
+                    homepageData?.homepage?.aboutSectionMainImagePath
+                  )
+                }"
+              ></div>
+            </div>
           </div>
         </div>
-        <div class="col-lg-6 col-12 mt-5 mt-lg-0">
+        <div class="col-lg-6 col-12 mt-5 mt-lg-0" ngbScrollSpyFragment="3">
           <h3
             class="section-title d-flex justify-content-center justify-content-lg-start"
           >
