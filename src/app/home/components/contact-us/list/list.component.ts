@@ -12,6 +12,7 @@ import { AppRoutes } from '../../../home.routes';
 import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 import { ContactService } from '../../../../core/services/contact.service';
 import { Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list',
@@ -28,7 +29,8 @@ export class ListComponent {
   constructor(
     private fb: FormBuilder,
     private breadcrumbService: BreadcrumbService,
-    private contactService: ContactService
+    private contactService: ContactService,
+    public sanitizer: DomSanitizer
   ) {
     this.breadcrumbService.setBreadcrumb([
       {

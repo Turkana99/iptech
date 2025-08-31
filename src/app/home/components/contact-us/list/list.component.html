@@ -1,212 +1,237 @@
-<section
-  class="get-in-touch-with-us section-split container"
-  *ngIf="data$ | async as data"
->
-  <div class="row">
-    <div class="col-lg-5 col-12 left">
-      <h3 class="section-title">
-        <span>{{ data?.title }}</span>
-      </h3>
-      <h2 class="section-header text-white">
-        {{ data?.subTitle }}
-      </h2>
-      <p class="section-description text-white text-lg-start">
-        {{ data?.shortDescription }}
-      </p>
-      <div class="info-container">
-        <div class="row gy-4 pt-4">
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <h3 class="m-0 text-break">{{ data?.lblAddressText }}:</h3>
-                <p class="m-0 text-break">
-                  {{ data?.address }}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-clock"></i>
-              </div>
-              <div>
-                <h3 class="m-0 text-break">{{ data?.lblOpeningHoursText }}:</h3>
-                <p class="m-0 text-break">
-                  {{ data?.openingHours }}
-                </p>
+<ng-container *ngIf="data$ | async as data">
+  <section class="get-in-touch-with-us section-split container">
+    <div class="row">
+      <div class="col-lg-5 col-12 left">
+        <h3 class="section-title">
+          <span>{{ data?.title }}</span>
+        </h3>
+        <h2 class="section-header text-white">
+          {{ data?.subTitle }}
+        </h2>
+        <p class="section-description text-white text-lg-start">
+          {{ data?.shortDescription }}
+        </p>
+        <div class="info-container">
+          <div class="row gy-4 pt-4">
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">{{ data?.lblAddressText }}:</h3>
+                  <p class="m-0 text-break">
+                    {{ data?.address }}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <h3 class="m-0 text-break">{{ data?.lblContactText }}:</h3>
-                <p class="m-0 text-break">
-                  {{ data?.contactNumber }}
-                </p>
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">
+                    {{ data?.lblOpeningHoursText }}:
+                  </h3>
+                  <p class="m-0 text-break">
+                    {{ data?.openingHours }}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-12 col-md-6 col-12">
-            <div
-              class="info-card d-flex flex-row align-items-center"
-              style="gap: 14px"
-            >
-              <div class="info-image-wrapper">
-                <i class="fa-solid fa-envelope"></i>
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">{{ data?.lblContactText }}:</h3>
+                  <p class="m-0 text-break">
+                    {{ data?.contactNumber }}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 class="m-0 text-break">{{ data?.lblEmailText }}:</h3>
-                <p class="m-0 text-break">
-                  {{ data?.email }}
-                </p>
+            </div>
+            <div class="col-lg-12 col-md-6 col-12">
+              <div
+                class="info-card d-flex flex-row align-items-center"
+                style="gap: 14px"
+              >
+                <div class="info-image-wrapper">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="m-0 text-break">{{ data?.lblEmailText }}:</h3>
+                  <p class="m-0 text-break">
+                    {{ data?.email }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-7 position-relative">
-      <img
-        class="form-background"
-        src="assets/images/form-background.png"
-        alt=""
-      />
-      <div class="form-wrapper">
-        <form class="col-12 row" [formGroup]="appealForm" *ngIf="!requestSent">
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >{{ "contactUsData.nameAndSurname" | translate }}
-              <span class="required-mark">*</span></label
-            >
-            <input type="email" class="form-control" formControlName="name" />
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+      <div class="col-lg-7 position-relative">
+        <img
+          class="form-background"
+          src="assets/images/form-background.png"
+          alt=""
+        />
+        <div class="form-wrapper">
+          <form
+            class="col-12 row"
+            [formGroup]="appealForm"
+            *ngIf="!requestSent"
+          >
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >{{ "contactUsData.nameAndSurname" | translate }}
+                <span class="required-mark">*</span></label
+              >
+              <input type="email" class="form-control" formControlName="name" />
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                 appealForm.get('name')?.errors?.['required'] &&
                 appealForm.get('name')?.touched
               "
-            >
-              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              >
+                <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >{{ "contactUsData.email" | translate }}
-              <span class="required-mark">*</span></label
-            >
-            <input type="email" class="form-control" formControlName="email" />
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >{{ "contactUsData.email" | translate }}
+                <span class="required-mark">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="email"
+              />
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                    appealForm.get('email')?.errors?.['required'] &&
                    appealForm.get('email')?.touched
                  "
-            >
-              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              >
+                <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              </div>
+              <div
+                class="validationMessage"
+                *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
+              >
+                <p class="p-0 m-0">{{ "reqMessage2" | translate }}</p>
+              </div>
             </div>
-            <div
-              class="validationMessage"
-              *ngIf="appealForm.get('email')?.invalid && appealForm.get('email')?.errors?.['email']"
-            >
-              <p class="p-0 m-0">{{ "reqMessage2" | translate }}</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >{{ "contactUsData.contactNumber" | translate }}
-              <span class="required-mark">*</span></label
-            >
-            <input
-              type="email"
-              class="form-control"
-              formControlName="contactNumber"
-            />
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >{{ "contactUsData.contactNumber" | translate }}
+                <span class="required-mark">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                formControlName="contactNumber"
+              />
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                    appealForm.get('contactNumber')?.errors?.['required'] &&
                    appealForm.get('contactNumber')?.touched
                  "
-            >
-              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              >
+                <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-12 mb-3 d-flex flex-column">
-            <label class="form-label"
-              >{{ "contactUsData.subject" | translate }}
-              <span class="required-mark">*</span></label
-            >
-            <input type="text" class="form-control" formControlName="subject" />
+            <div class="col-md-6 col-12 mb-3 d-flex flex-column">
+              <label class="form-label"
+                >{{ "contactUsData.subject" | translate }}
+                <span class="required-mark">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                formControlName="subject"
+              />
 
-            <div
-              class="validationMessage"
-              *ngIf="
+              <div
+                class="validationMessage"
+                *ngIf="
                       appealForm.get('subject')?.errors?.['required'] &&
                       appealForm.get('subject')?.touched
                     "
-            >
-              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              >
+                <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              </div>
             </div>
-          </div>
-          <div class="col-12">
-            <label class="form-label"
-              >{{ "contactUsData.message" | translate }}
-              <span class="required-mark">*</span></label
-            >
-            <textarea
-              class="form-control"
-              rows="3"
-              formControlName="message"
-            ></textarea>
-            <!--Required message-->
-            <div
-              class="validationMessage"
-              *ngIf="
+            <div class="col-12">
+              <label class="form-label"
+                >{{ "contactUsData.message" | translate }}
+                <span class="required-mark">*</span></label
+              >
+              <textarea
+                class="form-control"
+                rows="3"
+                formControlName="message"
+              ></textarea>
+              <!--Required message-->
+              <div
+                class="validationMessage"
+                *ngIf="
                    appealForm.get('message')?.errors?.['required'] &&
                    appealForm.get('message')?.touched
                  "
-            >
-              <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              >
+                <p class="p-0 m-0">{{ "reqMessage1" | translate }}</p>
+              </div>
             </div>
-          </div>
-          <div class="col-12 mt-4">
-            <button
-              class="gradient-button col-md-6 col-12"
-              type="button"
-              (click)="submitAppeal()"
-            >
-              <span>{{ "contactUsData.send" | translate }} </span>
-            </button>
-          </div>
-        </form>
-        <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
-          <img src="assets/images/send-email.png" alt="" />
-          <div class="content">
-            <h5>{{ "requestSent" | translate }}</h5>
-            <p>{{ "willContactSoon" | translate }}</p>
+            <div class="col-12 mt-4">
+              <button
+                class="gradient-button col-md-6 col-12"
+                type="button"
+                (click)="submitAppeal()"
+              >
+                <span>{{ "contactUsData.send" | translate }} </span>
+              </button>
+            </div>
+          </form>
+          <div class="request-sent col-lg-6 h-100" *ngIf="requestSent">
+            <img src="assets/images/send-email.png" alt="" />
+            <div class="content">
+              <h5>{{ "requestSent" | translate }}</h5>
+              <p>{{ "willContactSoon" | translate }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section-split map-section mt-5 pt-4">
+    <iframe
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(data?.mapUrl)"
+      width="100%"
+      height="600"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </section>
+</ng-container>
