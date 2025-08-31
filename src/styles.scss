@@ -626,6 +626,16 @@ section {
     color: #00a0f1;
     font-size: 24px;
   }
+
+  @media screen and (max-width: 992px) {
+    padding: 14px;
+    & span {
+      font-size: 14px;
+    }
+    & i {
+      font-weight: 14px;
+    }
+  }
 }
 
 .language-menu {
