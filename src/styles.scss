@@ -260,6 +260,24 @@ section {
   gap: 60px;
   padding: 18px 30px;
 
+  ::-webkit-scrollbar {
+    height: 5px;
+    cursor: pointer !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #024d83;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+  }
+  @media screen and (max-width: 992px) {
+    gap: 24px;
+  }
+
   .card-image {
     min-width: 200px;
     max-width: 200px;
@@ -268,12 +286,16 @@ section {
     background-repeat: no-repeat;
     background-position: center;
     background-image: var(--backgroundImgUrl);
+
+    @media screen and (max-width: 992px) {
+      min-width: 100px;
+      max-width: 100px;
+    }
   }
   .card-right {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(100% - 260px);
 
     .card-title {
       font-family: "Be Vietnam Pro", sans-serif;
@@ -284,6 +306,10 @@ section {
       letter-spacing: 0%;
       color: white;
       margin-bottom: 10px;
+
+      @media screen and (max-width: 992px) {
+        font-size: 24px;
+      }
     }
     .card-subtitle {
       i {
@@ -306,6 +332,16 @@ section {
       }
       margin-bottom: 10px;
       color: #bababa;
+
+      @media screen and (max-width: 992px) {
+        i {
+          font-size: 14px;
+        }
+        span {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
     }
     .card-description {
       font-family: "Be Vietnam Pro", sans-serif;
@@ -319,11 +355,18 @@ section {
       max-height: 130px;
       text-overflow: ellipsis;
       margin-bottom: 10px;
+
+      @media screen and (max-width: 992px) {
+        font-size: 12px;
+      }
     }
     .card-tags {
       display: flex;
       gap: 16px;
-      margin-bottom: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+      width: 100%;
+      overflow-x: auto;
 
       .card-tag {
         padding: 0px 10px;
